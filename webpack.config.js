@@ -10,6 +10,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
+      {
+        test: /\.(jpg|svg|png|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+      test: /\.css$/i,
+      use: ['style-loader',  'css-loader'],
+      }
     ],
   },
   resolve: {

@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Cv from './components/Cv';
+import './styles/cv.css';
 
 class App extends Component {
   constructor() {
@@ -6,7 +8,9 @@ class App extends Component {
   }
 
   render() {
-    return (<div> Hello </div>)
+    return (<div id="backdrop">
+      <Cv />
+       </div>)
   }
 }
 

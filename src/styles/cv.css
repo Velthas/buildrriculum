@@ -14,6 +14,16 @@
   --label-color: #1a1a1a;
 }
 
+@font-face {
+  font-family: 'monteserrat';
+  src: url('../fonts/Montserrat-Bold.otf');
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url('../fonts/Roboto-Regular.ttf');
+}
+
 #backdrop {
   display: flex;
   align-items: center;
@@ -31,6 +41,25 @@
 }
 
 /* Shared styling */
+
+.section-header {
+  align-self: flex-start;
+
+  font-family: 'monteserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  margin: 0;
+}
+
+#sidebar .section-header {
+  color: var(--sidebar-color);
+}
+
+ .section-paragraph {
+  font-family: 'roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 button.edit-button {
   position: absolute;
@@ -96,7 +125,8 @@ button.edit-button {
   color: var(--label-color);
 }
 
-.form input {
+.form input,
+.form textarea {
   width: 300px;
   margin: 5px 0 20px 0;
   padding: 10px;
@@ -109,15 +139,22 @@ button.edit-button {
   color: var(--label-color);
 }
 
-.form input::placeholder {
+.form textarea {
+  height: 180px;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
   color: var(--input-text);
 }
 
-.form input:hover {
+.form input:hover,
+.form textarea:hover {
   background-color: var(--input-background-hover)
 }
 
-.form input:focus-visible {
+.form input:focus-visible,
+.form textarea:focus-visible {
   outline: none;
   border-bottom: 2px solid var(--sidebar-background);
 }
@@ -143,7 +180,7 @@ button.edit-button {
 
 .button-cancel:hover {
   border: 1px solid var(--sidebar-background);
-  color: var(--input-lower-border);
+  color: var(--sidebar-background);
 }
 
 .button-submit {
@@ -169,6 +206,7 @@ button.edit-button {
 
 .cv-section {
   margin: 20px 20px;
+
   position: relative;
 }
 
@@ -176,6 +214,7 @@ button.edit-button {
 .edit-img-text {
   width: 200px;
   height: 200px;
+
   border-radius: 100px;
 }
 

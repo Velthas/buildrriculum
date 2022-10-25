@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Eleanor from './../images/eleanor.jpeg';
 import Picture from './Picture';
+import Profile from './Profile';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -26,9 +27,22 @@ class Sidebar extends Component {
     });
   };
 
+  displayButtons() {
+    this.setState({
+      buttons: true
+    })
+}
+
+  hideButtons() {
+  this.setState({
+    buttons: false
+  })
+}
+
   render() {
     return <div id="sidebar" className="flex-column centered">
-      <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} />
+      <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
+      <Profile profile={this.state.profile} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
     </div>
   }
 }

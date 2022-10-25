@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: './src/index.js',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -12,6 +13,10 @@ module.exports = {
       },
       {
         test: /\.(jpg|svg|png|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
       {

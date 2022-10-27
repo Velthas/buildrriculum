@@ -14,6 +14,8 @@
   --label-color: #1a1a1a;
 
   --filter-to-white: invert(100%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
+
+  
 }
 
 @font-face {
@@ -80,6 +82,11 @@ button.edit-button {
 .absolute-top-left {
   top: 0;
   left: 0;
+}
+
+.absolute-top-right {
+  top: 0;
+  right: 0;
 }
 
 #sidebar button.edit-button {

@@ -19,7 +19,7 @@ class Picture extends Component {
   render() {
     return (
     <div className="cv-section flex-row centered-both cv-image" onMouseEnter={this.displayButtons} onMouseLeave={this.hideButtons}>
-      { this.state.buttons && <button className="edit-button absolute-top-left" onClick={this.toggleEdit}>Modify</button> }
+      { this.state.buttons && <button className="edit-button absolute-top-right" onClick={this.toggleEdit}>Modify</button> }
       <img src={this.props.imgUrl}></img>
       { this.state.edit && 
         <div className="form">

@@ -12,17 +12,11 @@ class Contacts extends Component {
       buttons: false
     }
 
-    let {changeInfo, displayButtons, hideButtons} = this.props;
+    let {changeInfo, displayButtons, hideButtons, toggleEdit} = this.props;
     this.changeInfo = changeInfo;
-    this.toggleEdit = this.toggleEdit.bind(this);
+    this.toggleEdit = toggleEdit.bind(this);
     this.displayButtons = displayButtons.bind(this);
     this.hideButtons = hideButtons.bind(this);
-  }
-
-  toggleEdit() {
-    this.setState({
-      edit: !this.state.edit,
-    });
   }
 
   render() {

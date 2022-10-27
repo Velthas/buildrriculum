@@ -13,19 +13,13 @@ class Languages extends Component {
       trashcans: false,
     }
 
-    let {addLanguage, deleteLanguage, displayButtons, hideButtons} = this.props;
+    let {addLanguage, deleteLanguage, displayButtons, hideButtons, toggleEdit} = this.props;
     this.addLanguage = addLanguage;
     this.deleteLanguage = deleteLanguage;
-    this.toggleEdit = this.toggleEdit.bind(this);
+    this.toggleEdit = toggleEdit.bind(this);
     this.displayDeleteImg = this.displayDeleteImg.bind(this);
     this.displayButtons = displayButtons.bind(this);
     this.hideButtons = hideButtons.bind(this);
-  }
-
-  toggleEdit() {
-    this.setState({
-      edit: !this.state.edit,
-    });
   }
 
   displayDeleteImg() {

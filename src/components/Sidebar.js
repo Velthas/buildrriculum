@@ -18,49 +18,19 @@ class Sidebar extends Component {
       languages: [{ language: 'English', fluency: 'Fluent', id: 0}]
     }
 
-    this.changeInfo = this.changeInfo.bind(this);
-    this.addToArray = this.addToArray.bind(this);
-    this.removeFromArray = this.removeFromArray.bind(this);
+    this.changeInfo = this.props.changeInfo.bind(this);
+    this.addToArray = this.props.addToArray.bind(this);
+    this.removeFromArray = this.props.removeFromArray.bind(this);
   }
-
-  removeFromArray(arrName, index) {
-    const copy = [...this.state[arrName]];
-    copy.splice(index, 1);
-    this.setState({
-      [arrName]: copy,
-    });
-  }
-
-  addToArray(arrName, obj) {
-    this.setState({
-      [arrName]: this.state[arrName].concat([obj]),
-    });
-  };
-
-  changeInfo(varName, value) {
-    this.setState({
-      [varName]: value 
-    });
-  };
-
-  displayButtons() {
-    this.setState({
-      buttons: true
-    })
-}
-
-  hideButtons() {
-  this.setState({
-    buttons: false
-  })
-}
 
   render() {
+    const {displayButtons, hideButtons, toggleEdit} = this.props
+
     return <div id="sidebar" className="flex-column centered">
-      <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
-      <Profile profile={this.state.profile} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
-      <Contacts telephone={this.state.telephone} mail={this.state.mail} website={this.state.website} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
-      <Languages languages={this.state.languages} displayButtons={this.displayButtons} hideButtons={this.hideButtons} addLanguage={this.addToArray} deleteLanguage={this.removeFromArray} />
+      <Picture toggleEdit={toggleEdit} imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
+      <Profile toggleEdit={toggleEdit} profile={this.state.profile} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
+      <Contacts toggleEdit={toggleEdit} telephone={this.state.telephone} mail={this.state.mail} website={this.state.website} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
+      <Languages toggleEdit={toggleEdit} languages={this.state.languages} displayButtons={displayButtons} hideButtons={hideButtons} addLanguage={this.addToArray} deleteLanguage={this.removeFromArray} />
     </div>
   }
 }

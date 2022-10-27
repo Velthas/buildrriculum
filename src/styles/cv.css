@@ -59,7 +59,8 @@
   color: var(--sidebar-color);
 }
 
- .section-paragraph {
+ .cv-section p,
+ .cv-section a {
   font-family: 'roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -73,6 +74,7 @@ button.edit-button {
   border-radius: 5px;
 
   transition: 0.3s ease-in;
+  cursor: pointer;
 }
 
 .absolute-top-left {
@@ -227,8 +229,7 @@ ul {
   position: relative;
 }
 
-.cv-image img,
-.edit-img-text {
+.cv-image img {
   width: 200px;
   height: 200px;
 
@@ -239,33 +240,50 @@ ul {
   box-shadow: 20px 0px 1px white;
 }
 
-.contacts ul {
+#sidebar ul {
   align-self: flex-start;
+
+  width: 100%;
 }
 
 ul img {
   filter: var(--filter-to-white);
+  transition: 0.3s smooth;
 }
 
-.contacts p {
+.contacts p,
+.languages p {
   margin: 0;
   padding: 0;
 }
 
-.contacts li {
+#sidebar li {
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
 
+  height: 24px;
+  width: 100%;
   margin-top: 5px;
 }
 
-.contacts li:first-child {
+#sidebar li:first-child {
   margin-top: 0;
 }
 
 .contacts a {
   color: var(--sidebar-color);
+}
+
+#sidebar .languages ul li {
+  justify-content: space-between;
+}
+
+.languages li img:hover {
+  transform: scale(1.1);
+
+  cursor: pointer;
 }
 
 /* Right half of the CV */

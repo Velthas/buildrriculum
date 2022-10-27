@@ -3,6 +3,7 @@ import Eleanor from './../images/eleanor.jpeg';
 import Picture from './Picture';
 import Profile from './Profile';
 import Contacts from './Contacts';
+import Languages from './Languages'
 
 class Sidebar extends Component {
   constructor(props) {
@@ -14,11 +15,27 @@ class Sidebar extends Component {
       telephone: '202-555-01745',
       mail: 'eleanor@goodplace.org',
       website: 'https://goodplace.com/Eleanor',
-      languages: [['English', 'Fluent']]
+      languages: [{ language: 'English', fluency: 'Fluent', id: 0}]
     }
 
     this.changeInfo = this.changeInfo.bind(this);
+    this.addToArray = this.addToArray.bind(this);
+    this.removeFromArray = this.removeFromArray.bind(this);
   }
+
+  removeFromArray(arrName, index) {
+    const copy = [...this.state[arrName]];
+    copy.splice(index, 1);
+    this.setState({
+      [arrName]: copy,
+    });
+  }
+
+  addToArray(arrName, obj) {
+    this.setState({
+      [arrName]: this.state[arrName].concat([obj]),
+    });
+  };
 
   changeInfo(varName, value) {
     this.setState({
@@ -43,6 +60,7 @@ class Sidebar extends Component {
       <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
       <Profile profile={this.state.profile} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
       <Contacts telephone={this.state.telephone} mail={this.state.mail} website={this.state.website} changeInfo={this.changeInfo} displayButtons={this.displayButtons} hideButtons={this.hideButtons} />
+      <Languages languages={this.state.languages} displayButtons={this.displayButtons} hideButtons={this.hideButtons} addLanguage={this.addToArray} deleteLanguage={this.removeFromArray} />
     </div>
   }
 }

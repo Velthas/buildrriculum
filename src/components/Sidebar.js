@@ -11,10 +11,10 @@ class Sidebar extends Component {
 
     this.state = {
       photoUrl: Eleanor,
-      profile: 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words, all cheering for the time they detracted from your total lifetime count. Please, dont hate me',
-      telephone: '202-555-01745',
-      mail: 'eleanor@goodplace.org',
-      website: 'https://goodplace.com/Eleanor',
+      profile: 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words. Go on and edit this with your own, relevant info!',
+      telephone: '000-000-0000',
+      mail: 'example@mail.org',
+      website: 'https://yourwebsite.com/',
       languages: [{ language: 'English', fluency: 'Fluent', id: 0}]
     }
 

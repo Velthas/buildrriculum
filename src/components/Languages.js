@@ -39,7 +39,7 @@ class Languages extends Component {
       {this.props.languages.map((lang, index) => {
        return <li key={lang.id}>
           <p>{lang.language + ' - ' + lang.fluency}</p>
-          { this.state.trashcans && <img src={trashcan} onClick={() => { this.deleteLanguage('languages', index) }}></img> }
+          { this.state.trashcans && <img src={trashcan} className="trashcan" onClick={() => { this.deleteLanguage('languages', index) }}></img> }
         </li> 
       })}
       </ul>

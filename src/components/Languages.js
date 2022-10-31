@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import uniqid from 'uniqid';
 
 import trashcan from '../images/trashcan.svg';
@@ -11,66 +11,82 @@ class Languages extends Component {
       edit: false,
       buttons: false,
       trashcans: false,
-    }
+    };
 
-    let {addLanguage, deleteLanguage, displayButtons, hideButtons, toggleEdit} = this.props;
+    const {addLanguage, deleteLanguage} = this.props;
     this.addLanguage = addLanguage;
     this.deleteLanguage = deleteLanguage;
-    this.toggleEdit = toggleEdit.bind(this);
-    this.displayDeleteImg = this.displayDeleteImg.bind(this);
-    this.displayButtons = displayButtons.bind(this);
-    this.hideButtons = hideButtons.bind(this);
-  }
-
-  displayDeleteImg() {
-    this.setState({
-      trashcans: !this.state.trashcans,
-    })
   }
 
   render() {
     return (
-    <div className="cv-section flex-column centered-both languages"  onMouseEnter={this.displayButtons} onMouseLeave={this.hideButtons}>
+      <div className="cv-section flex-column centered-both languages"
+        onMouseEnter={() => this.setState({buttons: true})}
+        onMouseLeave={() => this.setState({buttons: false})}>
 
-      { this.state.buttons && <button className="edit-button absolute-top-right" onClick={this.toggleEdit}>Add</button> }
+        { this.state.buttons &&
+         <button className="edit-button absolute-top-right"
+           onClick={this.setState({edit: !this.state.edit})}>
+            Add
+         </button> }
 
-      <h3 className="section-header">Languages</h3>
-      <ul onMouseEnter={this.displayDeleteImg} onMouseLeave={this.displayDeleteImg}>
-      {this.props.languages.map((lang, index) => {
-       return <li key={lang.id}>
-          <p>{lang.language + ' - ' + lang.fluency}</p>
-          { this.state.trashcans && <img src={trashcan} className="trashcan" onClick={() => { this.deleteLanguage('languages', index) }}></img> }
-        </li> 
-      })}
-      </ul>
+        <h3 className="section-header">Languages</h3>
+        <ul onMouseEnter={() => this.setState({trashcans: !this.state.trashcans})}
+          onMouseLeave={() => this.setState({trashcans: !this.state.trashcans})}>
+          {this.props.languages.map((lang, index) => {
+            return <li key={lang.id}>
+              <p>{lang.language + ' - ' + lang.fluency}</p>
+              { this.state.trashcans &&
+               <img src={trashcan} className="trashcan" onClick={() => {
+                 this.deleteLanguage('languages', index);
+               }}></img> }
+            </li>;
+          })}
+        </ul>
 
-      { this.state.edit && 
+        { this.state.edit &&
         <div className="form">
           <form id="language-form">
-            <label for="language-name">{'Language Name'}</label>
+            <label htmlFor="language-name">{'Language Name'}</label>
             <input type="text" placeholder="English" id="language-name"></input>
 
-            <label for="language-fluency">{'Proficiency Level'}</label>
-            <input type="text" placeholder="Fluent" id="language-fluency"></input>
+            <label htmlFor="language-fluency">{'Proficiency Level'}</label>
+            <input type="text"
+              placeholder="Fluent"
+              id="language-fluency">
+            </input>
 
             <div className="flex-row">
-              <button class="button-cancel" type="button" onClick={this.toggleEdit}>Cancel</button>
-              <button class="button-submit" type="submit" onClick={(e) => {
+              <button className="button-cancel"
+                type="button"
+                onClick={this.setState({edit: !this.state.edit})}>
+                  Cancel
+              </button>
+              <button className="button-submit" type="submit" onClick={(e) => {
                 e.preventDefault();
-                const languageName = document.querySelector('#language-name').value;
-                const languageLevel = document.querySelector('#language-fluency').value;
+                const languageName = document
+                    .querySelector('#language-name')
+                    .value;
+                const languageLevel = document
+                    .querySelector('#language-fluency')
+                    .value;
                 const uniqueId = uniqid();
-                const newEntry = {language: languageName, fluency: languageLevel, id: uniqueId}
+                const newEntry = {
+                  language: languageName,
+                  fluency: languageLevel,
+                  id: uniqueId};
                 this.addLanguage('languages', newEntry);
-                this.toggleEdit();
-              }}>Confirm</button>
+                this.setState({edit: !this.state.edit});
+              }}>
+                Confirm
+              </button>
             </div>
           </form>
         </div> }
 
-
-  </div>
-  )}
+      </div>
+    );
+  }
 }
 
 export default Languages;

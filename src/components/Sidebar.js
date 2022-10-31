@@ -24,13 +24,16 @@ class Sidebar extends Component {
   }
 
   render() {
-    const {displayButtons, hideButtons, toggleEdit} = this.props
-
     return <div id="sidebar" className="flex-column centered">
-      <Picture toggleEdit={toggleEdit} imgUrl={this.state.photoUrl} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
-      <Profile toggleEdit={toggleEdit} profile={this.state.profile} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
-      <Contacts toggleEdit={toggleEdit} telephone={this.state.telephone} mail={this.state.mail} website={this.state.website} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons} />
-      <Languages toggleEdit={toggleEdit} languages={this.state.languages} displayButtons={displayButtons} hideButtons={hideButtons} addLanguage={this.addToArray} deleteLanguage={this.removeFromArray} />
+      <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo}/>
+      <Profile profile={this.state.profile} changeInfo={this.changeInfo} />
+      <Contacts telephone={this.state.telephone}
+        mail={this.state.mail}
+        website={this.state.website}
+        changeInfo={this.changeInfo} />
+      <Languages languages={this.state.languages}
+        addLanguage={this.addToArray}
+        deleteLanguage={this.removeFromArray} />
     </div>
   }
 }

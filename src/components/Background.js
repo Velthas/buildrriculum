@@ -51,13 +51,21 @@ class Background extends Component {
   }
 
   render() {
-    const {toggleEdit, displayButtons, hideButtons} = this.props;
 
     return (
     <div id="background">
-      <Name toggleEdit={toggleEdit} name={this.state.name} title={this.state.title} changeInfo={this.changeInfo} displayButtons={displayButtons} hideButtons={hideButtons}/> 
-      <Work toggleEdit={toggleEdit} work={this.state.work} addExperience={this.addToArray} deleteExperience={this.removeFromArray} displayButtons={displayButtons} hideButtons={hideButtons}/>
-      <Education toggleEdit={toggleEdit} education={this.state.education} addEducation={this.addToArray} deleteEducation={this.removeFromArray} displayButtons={displayButtons} hideButtons={hideButtons}/>
+      <Name 
+        name={this.state.name}
+        title={this.state.title}
+        changeInfo={this.changeInfo}/>
+      <Work toggleEdit={toggleEdit}
+        work={this.state.work}
+        addExperience={this.addToArray}
+        deleteExperience={this.removeFromArray}/>
+      <Education toggleEdit={toggleEdit}
+        education={this.state.education}
+        addEducation={this.addToArray}
+        deleteEducation={this.removeFromArray}/>
     </div>
     );
   }

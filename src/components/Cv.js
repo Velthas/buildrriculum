@@ -29,6 +29,7 @@ class Cv extends Component {
 
   render() {
     return (
+    <div id="backdrop"> 
       <div className="flex-row" id="cv-container">
         <Sidebar 
         changeInfo={this.changeInfo}
@@ -39,6 +40,7 @@ class Cv extends Component {
         addToArray={this.addToArray}
         removeFromArray={this.removeFromArray} />
       </div>
+    </div>   
     );
   }
 }

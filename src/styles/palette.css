@@ -1,0 +1,77 @@
+:root {
+  --color-name: #1a1a1a;
+  --color-hex: #b3b3b3;
+  --color-box-shadow: #2c2c2c;
+}
+
+:root.pea {
+  --sidebar-background: #678870;
+  --sidebar-color: #ffffff;
+}
+
+:root.navy {
+  --sidebar-background: #465591;
+  --sidebar-color: #ffffff;
+}
+
+:root.lilac {
+  --sidebar-background: #6b6788;
+  --sidebar-color: #ffffff;
+}
+
+:root.saffron {
+  --sidebar-background: #b7995f;
+  --sidebar-color: #ffffff;
+}
+
+:root.brick {
+  --sidebar-background: #914646;
+  --sidebar-color: #ffffff;
+}
+
+.palette {
+  background-color: var(--webpage-backdrop)
+}
+
+.color-container {
+  display: flex;
+  flex-direction: column;
+  
+  height: 150px;
+  width: 125px;
+
+  box-shadow: 0px 3px 4px var(--color-box-shadow);
+  margin: 0 25px;
+
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.color-container:hover {
+  transform: translateY(-5px);
+}
+
+.color-sample {
+  height: 100px;
+
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.color-container p {
+  margin: 0;
+}
+
+.color-info {
+  background-color: #ffffff;
+  padding: 8px;
+}
+
+.color-name {
+  color: var(--color-name);
+}
+
+.color-hex {
+  color: var(--color-hex);
+  text-transform: uppercase;
+}

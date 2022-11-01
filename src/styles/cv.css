@@ -1,4 +1,6 @@
 :root {
+  --webpage-backdrop: #2f323b;
+
   --sidebar-background: #678870;
   --sidebar-color: #ffffff;
   --image-backdrop: #ffffff; 
@@ -7,7 +9,6 @@
   --form-border: #d5d5d5;
   --input-upper-border: #e5e5e5;
   --input-lower-border: #868686;
-  --input-lower-border-focus: #678870;
   --input-background-color: #fafafa;
   --input-text: #5f5f5f;
   --input-background-hover: #eaeaea;
@@ -51,7 +52,7 @@ body {
 .header,
 .footer,
 #backdrop {
-  background-color: #2f323b
+  background-color: var(--webpage-backdrop);
 }
 
 .header,

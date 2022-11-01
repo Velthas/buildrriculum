@@ -27,7 +27,7 @@ class Contacts extends Component {
 
         { this.state.buttons &&
         <button className="edit-button absolute-top-right"
-          onClick={this.setState({edit: !this.state.edit})}>
+          onClick={() => this.setState({edit: !this.state.edit})}>
            Modify
         </button> }
 
@@ -75,7 +75,7 @@ class Contacts extends Component {
               <div className="flex-row">
                 <button className="button-cancel"
                   type="button"
-                  onClick={this.setState({edit: !this.state.edit})}>
+                  onClick={() => this.setState({edit: !this.state.edit})}>
                     Cancel
                 </button>
                 <button className="button-submit"

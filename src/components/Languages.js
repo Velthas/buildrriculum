@@ -26,7 +26,7 @@ class Languages extends Component {
 
         { this.state.buttons &&
          <button className="edit-button absolute-top-right"
-           onClick={this.setState({edit: !this.state.edit})}>
+           onClick={() => this.setState({edit: !this.state.edit})}>
             Add
          </button> }
 
@@ -59,7 +59,7 @@ class Languages extends Component {
             <div className="flex-row">
               <button className="button-cancel"
                 type="button"
-                onClick={this.setState({edit: !this.state.edit})}>
+                onClick={() => this.setState({edit: !this.state.edit})}>
                   Cancel
               </button>
               <button className="button-submit" type="submit" onClick={(e) => {

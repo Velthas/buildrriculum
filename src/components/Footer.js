@@ -10,7 +10,7 @@ class Footer extends Component {
     <div className={this.props.class || ""}>
       <p>Coded by
         <a href={this.props.profile}> {this.props.author}</a> 2022.
-       Source code <a href={this.props.code}>here</a>
+       Source code <a href={this.props.code}>here</a>.
       </p>
     </div>
     )

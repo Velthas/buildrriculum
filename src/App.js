@@ -35,7 +35,7 @@ class App extends Component {
       <div className="flex-row centered-both">
         <ReactToPrint
         content={() => this.cvReference}
-        trigger={() => <button className="print-to-pdf">PRINT</button> } />
+        trigger={() => <button className="print-to-pdf">SAVE AS PDF</button> } />
       </div>
       <Footer author="Velthas"
         class="footer flex-row centered-both"

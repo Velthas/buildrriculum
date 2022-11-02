@@ -9,7 +9,7 @@
   --sidebar-background: #b7995f;
 }
 
-#cv-container.brick 
+#cv-container.brick,
 :root.brick{
   --sidebar-background: #914646;
 }

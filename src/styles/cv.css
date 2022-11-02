@@ -430,3 +430,8 @@ div.work-entry h4 {
 .job-info {
   font-weight: bold;
 }
+
+.work-entry,
+.education-entry {
+  white-space: pre-wrap;
+}

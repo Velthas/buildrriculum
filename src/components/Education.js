@@ -33,7 +33,7 @@ class Education extends Component {
         <div onMouseEnter={() => this.setState({trashcans: true})}
           onMouseLeave={() => this.setState({trashcans: false})}>
           { education.map((education) => {
-            return <div key={education.id} className="work-entry flex-column">
+            return <div key={education.id} className="education-entry flex-column">
 
               { this.state.trashcans &&
                <img src={trashcan}

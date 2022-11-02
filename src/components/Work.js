@@ -32,13 +32,13 @@ class Work extends Component {
         <div onMouseEnter={() => this.setState({trashcans: true})}
           onMouseLeave={() => this.setState({trashcans: false})}>
           { work.map((experience, index) => {
-            return <div key={uniqid()} className="work-entry flex-column">
+            return <div key={experience} className="work-entry flex-column">
 
               { this.state.trashcans &&
                <img src={trashcan}
                  className='absolute-position absolute-bottom-right trashcan'
                  onClick={() => {
-                   deleteExperience('work', index);
+                   deleteExperience('work', experience.id);
                  }}>
                </img> }
 
@@ -105,7 +105,8 @@ class Work extends Component {
                 const description = document
                     .querySelector('#job-form textarea')
                     .value;
-                addExperience('work', {position, company, start, end, description});
+                const id = uniqid();
+                addExperience('work', {position, company, start, end, description, id});
                 this.setState({edit: !this.state.edit})
               }}>
                 Confirm

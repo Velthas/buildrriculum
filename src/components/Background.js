@@ -19,6 +19,7 @@ class Background extends Component {
           start: "09/01",
           end: "06/06",
           description: sampleText,
+          id: 0
         },
         {
           title: 'Example Education Title',
@@ -26,6 +27,7 @@ class Background extends Component {
           start: "09/01",
           end: "06/06",
           description: sampleText,
+          id: 1
         }
       ],
       work: [{
@@ -34,6 +36,7 @@ class Background extends Component {
         start: "05/07",
         end: "05/14",
         description: sampleText,
+        id: 3
       },
       {
         position: 'Example Profession Name',
@@ -41,6 +44,7 @@ class Background extends Component {
         start: "05/07",
         end: "05/14",
         description: sampleText,
+        id: 4
       }
     ],
   }

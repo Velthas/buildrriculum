@@ -63,7 +63,7 @@ body {
   font-family: 'roboto', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   letter-spacing: 15px;
 
-  margin: 0
+  margin: 0;
 }
 
 .footer a {
@@ -82,7 +82,8 @@ body {
     height: 50px;
 
     font-size: 1.3rem;
-    font-family: 'roboto';
+    font-family: 'roboto', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
 
     border: none;
     border-radius: 3px;

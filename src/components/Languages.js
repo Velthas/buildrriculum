@@ -33,12 +33,12 @@ class Languages extends Component {
         <h3 className="section-header">Languages</h3>
         <ul onMouseEnter={() => this.setState({trashcans: !this.state.trashcans})}
           onMouseLeave={() => this.setState({trashcans: !this.state.trashcans})}>
-          {this.props.languages.map((lang, index) => {
+          {this.props.languages.map((lang) => {
             return <li key={lang.id}>
               <p>{lang.language + ' - ' + lang.fluency}</p>
               { this.state.trashcans &&
                <img src={trashcan} className="trashcan" onClick={() => {
-                 this.deleteLanguage('languages', index);
+                 this.deleteLanguage('languages', lang.id);
                }}></img> }
             </li>;
           })}

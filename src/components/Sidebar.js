@@ -18,7 +18,11 @@ class Sidebar extends Component {
       mail: 'example@mail.org',
       website: 'https://yourwebsite.com/',
       languages: [{ language: 'English', fluency: 'Fluent', id: 0}],
-      skills: ['Very useful skill', 'Moderately useful skill', 'Useless skill']
+      skills: [
+        { name: 'Pizza Slice Juggler', id: 0},
+        { name: 'Moderately useful skill', id: 2},
+        { name: 'Procastinating', id: 3}
+      ]
     }
 
     this.changeInfo = this.props.changeInfo.bind(this);

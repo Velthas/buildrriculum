@@ -32,13 +32,13 @@ class Education extends Component {
 
         <div onMouseEnter={() => this.setState({trashcans: true})}
           onMouseLeave={() => this.setState({trashcans: false})}>
-          { education.map((education, index) => {
-            return <div key={uniqid()} className="work-entry flex-column">
+          { education.map((education) => {
+            return <div key={education.id} className="work-entry flex-column">
 
               { this.state.trashcans &&
                <img src={trashcan}
                  className='absolute-position absolute-bottom-right trashcan'
-                 onClick={() => { deleteEducation('education', index); }}>
+                 onClick={() => { deleteEducation('education', education.id); }}>
                </img> }
 
               <h4>{ education.title }</h4>
@@ -104,8 +104,9 @@ class Education extends Component {
              const description = document
                  .querySelector('#education-form textarea')
                  .value;
+             const id = uniqid();
              addEducation('education',
-                 {title, institution, start, end, description});
+                 {title, institution, start, end, description, id});
              this.setState({edit: !this.state.edit})
            }}>
              Confirm

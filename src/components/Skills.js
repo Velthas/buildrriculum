@@ -33,12 +33,12 @@ class Skills extends Component {
         <h3 className="section-header">Skills</h3>
         <ul onMouseEnter={() => this.setState({trashcans: true})}
           onMouseLeave={() => this.setState({trashcans: false})}>
-          {this.props.skills.map((skill, index) => {
-            return <li key={uniqid()}>
-              <p>{skill}</p>
+          {this.props.skills.map((skill) => {
+            return <li key={skill.id}>
+              <p>{skill.name}</p>
               { this.state.trashcans &&
                <img src={trashcan} className="trashcan" onClick={() => {
-                 this.deleteSkill('skills', index);
+                 this.deleteSkill('skills', skill.id);
                }}></img> }
             </li>;
           })}
@@ -58,10 +58,11 @@ class Skills extends Component {
               </button>
               <button className="button-submit" type="submit" onClick={(e) => {
                 e.preventDefault();
-                const skill = document
+                const name = document
                     .querySelector('#skill-name')
                     .value;
-                this.addSkill('skills', skill);
+                const id = uniqid();
+                this.addSkill('skills', {name, id});
                 this.setState({edit: !this.state.edit});
               }}>
                 Confirm

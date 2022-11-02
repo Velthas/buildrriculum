@@ -8,11 +8,10 @@ class Cv extends Component {
     super(props);
   }
 
-  removeFromArray(arrName, index) {
+  removeFromArray(arrName, id) {
     const copy = [...this.state[arrName]];
-    copy.splice(index, 1);
     this.setState({
-      [arrName]: copy,
+      [arrName]: copy.filter((element) => element.id !== id ),
     });
   }
 

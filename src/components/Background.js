@@ -8,7 +8,7 @@ class Background extends Component {
   constructor(props) {
     super(props);
 
-    const sampleText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet auctor porta. Donec dolor risus, elementum eu risus et, laoreet efficitur sem. Etiam sed sagittis nisl, aliquam bibendum ligula. Vestibulum dignissim sem nec molestie rhoncus. In suscipit sapien quis nulla aliquet, eu congue dolor euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
+    const sampleText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet auctor porta. Donec dolor risus, elementum eu risus et, laoreet efficitur sem. Etiam sed sagittis nisl, aliquam bibendum ligula. Vestibulum dignissim sem nec molestie rhoncus. In suscipit sapien quis nulla aliquet, eu congue dolor euismod.";
 
     this.state = {
       name: 'Full Name',

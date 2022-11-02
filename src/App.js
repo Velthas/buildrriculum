@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Palette from'./components/Palette';
 import Footer from'./components/Footer';
 
+import ReactToPrint from 'react-to-print';
+
 import './styles/cv.css';
 
 class App extends Component {
@@ -27,7 +29,14 @@ class App extends Component {
     <div className="container">
       <Header name="BUILDRRICULUM" class="header flex-row centered-both" />
       <Palette classes="flex-row centered-both palette" palette={this.palette} />
-      <Cv />
+      <div id="backdrop"> 
+        <Cv ref={(element) => this.cvReference = element }/>
+      </div>
+      <div className="flex-row centered-both">
+        <ReactToPrint
+        content={() => this.cvReference}
+        trigger={() => <button className="print-to-pdf">PRINT</button> } />
+      </div>
       <Footer author="Velthas"
         class="footer flex-row centered-both"
         profile={this.profileUrl}

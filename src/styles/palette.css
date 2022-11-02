@@ -4,29 +4,29 @@
   --color-box-shadow: #2c2c2c;
 }
 
-:root.pea {
-  --sidebar-background: #678870;
-  --sidebar-color: #ffffff;
-}
-
-:root.navy {
-  --sidebar-background: #465591;
-  --sidebar-color: #ffffff;
-}
-
-:root.lilac {
-  --sidebar-background: #6b6788;
-  --sidebar-color: #ffffff;
-}
-
+#cv-container.saffron,
 :root.saffron {
   --sidebar-background: #b7995f;
-  --sidebar-color: #ffffff;
 }
 
-:root.brick {
+#cv-container.brick 
+:root.brick{
   --sidebar-background: #914646;
-  --sidebar-color: #ffffff;
+}
+
+#cv-container.lilac,
+:root.lilac {
+  --sidebar-background: #6b6788;
+}
+
+#cv-container.pea,
+:root.pea {
+  --sidebar-background: #678870;
+}
+
+#cv-container.navy,
+:root.navy {
+  --sidebar-background: #465591;
 }
 
 .palette {

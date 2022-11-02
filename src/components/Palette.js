@@ -7,7 +7,8 @@ class Palette extends Component {
   }
 
   setTheme(theme) {
-    document.querySelector('html').setAttribute('class', `${theme}`)
+    document.querySelector('#cv-container').setAttribute('class', `flex-row ${theme}`);
+    document.querySelector('html').setAttribute('class', `${theme}`);
   }
 
   render() {

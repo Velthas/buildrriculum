@@ -412,18 +412,23 @@ div.name h2 {
   margin: 0;
 }
 
-.work-entry {
+.work-entry,
+.education-entry {
   margin-top: 1em;
   position: relative;
 }
 
-.work-entry h4 {
+.work-entry h4,
+.education-entry h4 {
   font-size: 1.2rem;
 }
 
 div.work-entry h3,
 div.work-entry p,
-div.work-entry h4 {
+div.work-entry h4,
+div.education-entry h3,
+div.education-entry p,
+div.education-entry h4 {
   margin: 5px 0;
 }
 

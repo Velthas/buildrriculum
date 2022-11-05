@@ -1,5 +1,4 @@
-import React, {Component} from 'react'
-import '../styles/palette.css'
+import React, {Component} from 'react';
 
 class Palette extends Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class Palette extends Component {
     const {classes, palette} = this.props;
 
     return (
-    <div className={classes}>
+    <div className={classes} id="palette">
       { palette.map(color => {
           return (
             <div className="color-container" 

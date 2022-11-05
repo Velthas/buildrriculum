@@ -1,7 +1,7 @@
-/* eslint-disable require-jsdoc */
 import React, {Component} from 'react';
 import uniqid from 'uniqid';
-import trashcan from '../images/trashcan.svg';
+
+import trashcan from '../../images/trashcan.svg';
 
 class Work extends Component {
   constructor(props) {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Eleanor from './../images/eleanor.jpeg';
-import Picture from './Picture';
 
+import Eleanor from '../../images/eleanor.jpeg';
+
+import Picture from './Picture';
 import Profile from './Profile';
 import Contacts from './Contacts';
 import Languages from './Languages';
@@ -28,6 +29,7 @@ class Sidebar extends Component {
     this.changeInfo = this.props.changeInfo.bind(this);
     this.addToArray = this.props.addToArray.bind(this);
     this.removeFromArray = this.props.removeFromArray.bind(this);
+    this.editEntry = this.props.editEntry.bind(this);
   }
 
   render() {
@@ -40,7 +42,8 @@ class Sidebar extends Component {
         changeInfo={this.changeInfo} />
       <Skills skills={this.state.skills}
         addSkill={this.addToArray}
-        deleteSkill={this.removeFromArray} />
+        deleteSkill={this.removeFromArray}
+        editSkill={this.editEntry} />
       <Languages languages={this.state.languages}
         addLanguage={this.addToArray}
         deleteLanguage={this.removeFromArray} />

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import uniqid from 'uniqid';
 
-import trashcan from '../images/trashcan.svg';
+import trashcan from '../../images/trashcan.svg';
 
 class Languages extends Component {
   constructor(props) {

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom/client";
 
-import Cv from './components/Cv';
-import Header from './components/Header';
-import Palette from'./components/Palette';
-import Footer from'./components/Footer';
+import Cv from './components/sections/Cv';
+import Header from './components/sections/Header';
+import Palette from'./components/sections/Palette';
+import Footer from'./components/sections/Footer';
 
 import ReactToPrint from 'react-to-print';
 
 import './styles/cv.css';
+import './styles/form.css';
+import './styles/shared.css';
+import './styles/palette.css';
 
 class App extends Component {
   constructor() {
@@ -26,9 +30,9 @@ class App extends Component {
 
   render() {
     return (
-    <div className="container">
-      <Header name="BUILDRRICULUM" class="header flex-row centered-both" />
-      <Palette classes="flex-row centered-both palette" palette={this.palette} />
+    <>
+      <Header name="BUILDRRICULUM" class="flex-row centered-both" />
+      <Palette classes="flex-row centered-both" palette={this.palette} />
       <div id="backdrop"> 
         <Cv ref={(element) => this.cvReference = element }/>
       </div>
@@ -41,9 +45,14 @@ class App extends Component {
         class="footer flex-row centered-both"
         profile={this.profileUrl}
         code={this.codeUrl} />
-    </div>
+    </>
     )
   }
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)

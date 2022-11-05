@@ -29,10 +29,6 @@
   --sidebar-background: #465591;
 }
 
-.palette {
-  background-color: var(--webpage-backdrop)
-}
-
 .color-container {
   display: flex;
   flex-direction: column;

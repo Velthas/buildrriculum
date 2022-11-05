@@ -7,7 +7,7 @@ class Footer extends Component {
 
   render() {
     return (
-    <div className={this.props.class || ""}>
+    <div className={this.props.class || ""} id="footer">
       <p>Coded by
         <a href={this.props.profile}> {this.props.author}</a> 2022.
        Source code <a href={this.props.code}>here</a>.

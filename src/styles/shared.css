@@ -105,8 +105,6 @@ body {
   transform: translateY(5px);
 }
 
-/* Shared styling */
-
 .section-header {
   align-self: flex-start;
 
@@ -196,11 +194,9 @@ button.edit-button:hover {
   justify-content: space-between;
 }
 
-
 a {
   text-decoration: none;
 }
-
 
 ul {
   margin: 0;
@@ -210,142 +206,15 @@ ul {
   list-style: none;
 }
 
+#sidebar img.trashcan,
 img.trashcan {
   filter: var(--filter-to-red);
   transition: 0.3s smooth;
+
   cursor: pointer;
 }
 
+#sidebar img.trashcan:hover,
 img.trashcan:hover {
   filter: var(--filter-to-red-hover);
-}
-
-/* Left half of the CV */
-
-#sidebar {
-  min-height: 1000px;
-  width: 40%;
-
-  background-color: var(--sidebar-background);
-  color: var(--sidebar-color);
-}
-
-.cv-section {
-  margin: 20px 20px;
-
-  position: relative;
-}
-
-.cv-image img {
-  width: 200px;
-  height: 200px;
-
-  border-radius: 100px;
-}
-
-.cv-image img{
-  box-shadow: 20px 0px 1px white;
-}
-
-#sidebar ul {
-  align-self: flex-start;
-
-  width: 100%;
-}
-
-#sidebar ul img {
-  filter: var(--filter-to-white);
-  transition: 0.3s smooth;
-}
-
-.contacts p,
-.languages p {
-  margin: 0;
-  padding: 0;
-}
-
-#sidebar li {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 5px;
-
-  height: 24px;
-  width: 100%;
-  margin-top: 5px;
-}
-
-#sidebar li:first-child {
-  margin-top: 0;
-}
-
-.contacts a {
-  color: var(--sidebar-color);
-}
-
-#sidebar .languages ul li {
-  justify-content: space-between;
-}
-
-.languages li img:hover {
-  transform: scale(1.1);
-
-  cursor: pointer;
-}
-
-/* Right half of the CV */
-
-#background {
-  min-height: 1000px;
-  width: 60%;
-
-  background-color: var(--sidebar-color);
-  color: var(--history-color);
-  font-family: 'roboto', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.cv-section.name {
-  margin-bottom: 70px;
-}
-
-div.name h1 {
-  margin: 0;
-
-  color: var(--sidebar-background);
-
-  font-size: 2.4rem;
-}
-
-div.name h2 {
-  font-weight: 100;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-
-  margin: 0;
-}
-
-.work-entry,
-.education-entry {
-  margin-top: 1em;
-  position: relative;
-
-  white-space: pre-wrap;
-}
-
-.work-entry h4,
-.education-entry h4 {
-  font-size: 1.2rem;
-}
-
-div.work-entry h3,
-div.work-entry p,
-div.work-entry h4,
-div.education-entry h3,
-div.education-entry p,
-div.education-entry h4 {
-  margin: 5px 0;
-}
-
-.job-info {
-  font-weight: bold;
 }

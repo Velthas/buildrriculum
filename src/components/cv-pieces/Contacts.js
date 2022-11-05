@@ -1,9 +1,8 @@
-/* eslint-disable require-jsdoc */
 import React, {Component} from 'react';
 
-import email from '../images/mail.svg';
-import web from '../images/web.svg';
-import smartphone from '../images/smartphone.svg';
+import email from '../../images/mail.svg';
+import web from '../../images/web.svg';
+import smartphone from '../../images/smartphone.svg';
 
 class Contacts extends Component {
   constructor(props) {

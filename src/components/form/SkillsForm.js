@@ -11,6 +11,7 @@ class SkillsForm extends Component {
 
   render() {
     const {toggleEdit, handleSubmit, skill} = this.props;
+
     return (
       <div className="form">
           <form id="skill-form">
@@ -18,7 +19,9 @@ class SkillsForm extends Component {
             <Input label={'Skill'}
             id="skill-name"
             placeholder="Pizza Ingurgitation Specialist"
-            maxLength="25" />
+            maxLength="25"
+            text={skill ? skill.name : ""}
+             />
 
             <div className="flex-row">
               <button className="button-cancel"

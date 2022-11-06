@@ -206,15 +206,15 @@ ul {
   list-style: none;
 }
 
-#sidebar img.trashcan,
-img.trashcan {
+#sidebar img.edit-icon,
+img.edit-icon {
   filter: var(--filter-to-red);
   transition: 0.3s smooth;
 
   cursor: pointer;
 }
 
-#sidebar img.trashcan:hover,
-img.trashcan:hover {
+#sidebar img.edit-icon:hover,
+img.edit-icon:hover {
   filter: var(--filter-to-red-hover);
 }

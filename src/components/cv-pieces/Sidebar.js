@@ -20,7 +20,7 @@ class Sidebar extends Component {
       website: 'https://yourwebsite.com/',
       languages: [{ language: 'English', fluency: 'Fluent', id: 0}],
       skills: [
-        { name: 'Pizza Slice Juggler', id: 0},
+        { name: 'Pizza Slice Juggler', id: 1},
         { name: 'Moderately useful skill', id: 2},
         { name: 'Procastinating', id: 3}
       ]

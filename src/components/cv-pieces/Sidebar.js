@@ -46,6 +46,7 @@ class Sidebar extends Component {
         editSkill={this.editEntry} />
       <Languages languages={this.state.languages}
         addLanguage={this.addToArray}
+        editLanguage={this.editEntry}
         deleteLanguage={this.removeFromArray} />
     </div>
   }

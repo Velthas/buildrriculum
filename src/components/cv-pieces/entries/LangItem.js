@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import SkillsForm from '../../form/SkillsForm';
+import LanguageForm from '../../form/LanguageForm';
 
 import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
-class SkillItem extends Component {
+class LangItem extends Component {
   constructor(props) {
     super(props);
 
@@ -22,14 +22,16 @@ class SkillItem extends Component {
   }
 
   render() {
-    const { editSkill, deleteSkill, skill } = this.props;
+    const { editLanguage, deleteLanguage, lang } = this.props;
 
     return (
       <>
         <li
           onMouseEnter={() => this.setState({ icons: true })}
           onMouseLeave={() => this.setState({ icons: false })}>
-          <p>{skill.name}</p>
+
+          <p>{lang.language + ' - ' + lang.fluency}</p>
+
           { this.state.icons
             && (
             <div className="icon-container">
@@ -43,7 +45,7 @@ class SkillItem extends Component {
                 src={trashcan}
                 className="edit-icon"
                 onClick={() => {
-                  deleteSkill('skills', skill.id);
+                  deleteLanguage('languages', lang.id);
                 }}
               />
             </div>
@@ -52,15 +54,15 @@ class SkillItem extends Component {
 
         { this.state.edit
           && (
-          <SkillsForm
-            handleSubmit={editSkill}
+          <LanguageForm
+            handleSubmit={editLanguage}
             toggleEdit={this.toggleEdit}
-            skill={skill}
+            lang={lang}
           />
-          ) }
+          )}
       </>
     );
   }
 }
 
-export default SkillItem;
+export default LangItem;

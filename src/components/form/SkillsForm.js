@@ -17,6 +17,7 @@ class SkillsForm extends Component {
           <form id="skill-form">
 
             <Input label={'Skill'}
+            type={'text'}
             id="skill-name"
             placeholder="Pizza Ingurgitation Specialist"
             maxLength="25"

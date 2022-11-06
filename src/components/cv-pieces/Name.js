@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import NameForm from '../form/NameForm';
+
 class Name extends Component {
   constructor(props) {
     super(props);
@@ -8,10 +10,18 @@ class Name extends Component {
       buttons: false,
       edit: false,
     };
+
+    this.toggleEdit = this.toggleEdit.bind(this);
+  }
+
+  toggleEdit() {
+    this.setState({
+      edit: !this.state.edit,
+    });
   }
 
   render() {
-    const {name, title} = this.props;
+    const {name, title, changeInfo} = this.props;
 
     return (
       <div className="cv-section flex-column name"
@@ -28,47 +38,10 @@ class Name extends Component {
         <h2>{title}</h2>
 
         {this.state.edit &&
-         <div className="form">
-           <form id="name-form" className="flex-column">
-
-             <label htmlFor="person-name">{'Full Name'}</label>
-             <input type="text"
-               maxLength="30"
-               placeholder="John Smith"
-               id="person-name">
-             </input>
-
-             <label htmlFor="person-role">{'Role'}</label>
-             <input type="text"
-               maxLength="30"
-               placeholder="Trainspotter"
-               id="person-role">
-             </input>
-
-             <div className="flex-row">
-               <button className="button-cancel"
-                 type="button"
-                 onClick={() => this.setState({edit: !this.state.edit})}>
-                   Cancel
-               </button>
-               <button className="button-submit"
-                 type="submit"
-                 onClick={(e) => {
-                   e.preventDefault();
-                   const newInfo = Array
-                       .from(document.querySelectorAll('#name-form input'))
-                       .map((input) => input.value);
-                   const [userName, role] = newInfo;
-                   this.props.changeInfo('name', userName);
-                   this.props.changeInfo('title', role);
-                   this.setState({edit: !this.state.edit});
-                 }}>
-                 Confirm
-               </button>
-             </div>
-           </form>
-         </div>}
-
+         <NameForm
+         toggleEdit={this.toggleEdit}
+         handleSubmit={changeInfo} /> 
+        }
       </div>
     );
   }

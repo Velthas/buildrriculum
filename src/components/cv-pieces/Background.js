@@ -49,9 +49,11 @@ class Background extends Component {
     ],
   }
 
-    this.changeInfo = this.props.changeInfo.bind(this);
-    this.addToArray = this.props.addToArray.bind(this);
-    this.removeFromArray = this.props.removeFromArray.bind(this);
+    const {changeInfo, addToArray, removeFromArray, editEntry} = this.props;
+    this.changeInfo = changeInfo.bind(this);
+    this.addToArray = addToArray.bind(this);
+    this.removeFromArray = removeFromArray.bind(this);
+    this.editEntry = editEntry.bind(this);
   }
 
   render() {
@@ -62,9 +64,11 @@ class Background extends Component {
         title={this.state.title}
         changeInfo={this.changeInfo}/>
       <Work work={this.state.work}
-        addExperience={this.addToArray}
-        deleteExperience={this.removeFromArray}/>
+        addWork={this.addToArray}
+        editWork={this.editEntry}
+        deleteWork={this.removeFromArray}/>
       <Education education={this.state.education}
+        editEducation={this.editEntry}
         addEducation={this.addToArray}
         deleteEducation={this.removeFromArray}/>
     </div>

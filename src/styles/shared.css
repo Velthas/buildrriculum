@@ -125,19 +125,6 @@ body {
   font-family: 'roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button.edit-button {
-  position: absolute;
-
-  padding: 10px 25px;
-
-  font-size: 1.1rem;
-
-  border-radius: 5px;
-
-  transition: 0.3s ease-in;
-  cursor: pointer;
-}
-
 .absolute-position {
   position: absolute;
 }
@@ -155,20 +142,6 @@ button.edit-button {
 .absolute-bottom-right {
   bottom: 0;
   right: 0;
-}
-
-button.edit-button {
-  background-color: var(--sidebar-color);
-  color: var(--sidebar-background);
-
-  border: 1px solid var(--sidebar-background);
-}
-
-button.edit-button:hover {
-  background-color: var(--sidebar-background);
-  color: var(--sidebar-color);
-
-  filter: brightness(80%);
 }
 
 .flex-row {

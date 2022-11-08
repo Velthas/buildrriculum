@@ -55,6 +55,7 @@ class Cv extends Component {
         <Background
           changeInfo={this.changeInfo}
           addToArray={this.addToArray}
+          editEntry={this.editEntry}
           removeFromArray={this.removeFromArray}
         />
       </div>

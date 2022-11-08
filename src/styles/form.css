@@ -48,6 +48,11 @@
   border-bottom: 2px solid var(--sidebar-background);
 }
 
+.form form {
+  display: flex;
+  flex-direction: column;
+}
+
 .button-cancel,
 .button-submit {
   padding: 10px 17px;

@@ -32,7 +32,7 @@ class App extends Component {
     return (
     <>
       <Header name="BUILDRRICULUM" class="flex-row centered-both" />
-      <Palette classes="flex-row centered-both" palette={this.palette} />
+      <Palette classes="flex-column centered-both" palette={this.palette} />
       <div id="backdrop"> 
         <Cv ref={(element) => this.cvReference = element }/>
       </div>

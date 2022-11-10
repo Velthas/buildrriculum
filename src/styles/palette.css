@@ -30,14 +30,8 @@
 }
 
 .color-container {
-  display: flex;
-  flex-direction: column;
-  
-  height: 150px;
-  width: 125px;
-
   box-shadow: 0px 3px 4px var(--color-box-shadow);
-  margin: 0 25px;
+  max-width: 150px;
 
   cursor: pointer;
   transition: 0.2s ease-out;
@@ -45,6 +39,16 @@
 
 .color-container:hover {
   transform: translateY(-5px);
+}
+
+.palette-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
+
+  width: 60%;
+
 }
 
 .color-sample {

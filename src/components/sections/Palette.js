@@ -39,7 +39,7 @@ class Palette extends Component {
 
     return (
     <div className={classes} id="palette">
-      <div className="flex-row centered-both">
+      <div className="palette-container">
         { palette.map(color => {
             return (
               <div className="color-container" 

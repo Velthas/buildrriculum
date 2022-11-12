@@ -1,41 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Input extends Component {
-  constructor(props) {
-    super(props);
+const Input = (props) => {
+  const { text, label, type, id, placeholder, length } = props;
+  const [value, setValue] = useState(text || "");
 
-    this.state = {
-      value: this.props.text || "", 
-    }
+  const handleChange = (e) => setValue(e.target.value);
 
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(event) {
-    this.setState({
-      value: event.target.value,
-    })
-  }
-
-  render() {
-    const { label, type, id, placeholder, length } = this.props;
-    return (
-      <>
-        <label htmlFor={id}>
-          {label}
-        </label>
-        <input
-          type={type}
-          id={id}
-          placeholder={placeholder}
-          maxLength={length || 50}
-          value={this.state.value}
-          onChange={(e) => this.handleChange(e)}
-        >
-        </input>
-      </>
-    );
-  }
+  return (
+    <>
+      <label htmlFor={id}>
+        {label}
+      </label>
+      <input
+        type={type}
+        id={id}
+        placeholder={placeholder}
+        maxLength={length || 50}
+        value={value}
+        onChange={(e) => handleChange(e)}
+      >
+      </input>
+    </>
+  )
 }
 
 export default Input;

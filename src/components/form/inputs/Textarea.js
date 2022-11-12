@@ -1,39 +1,26 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
-class Textarea extends Component {
-  constructor(props) {
-    super(props)
+const Textarea = (props) => {
+  const { text, label, id, placeholder, maxLength } = props;
+  const [value, setValue] = useState(text || "");
 
-    this.state = {
-      value: this.props.text || ""
-    }
+  const handleChange = (e) => setValue(e.target.value);
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      value: event.target.value,
-    })
-  }
-
-  render() {
-    const { label, id, placeholder, maxLength } = this.props;
-    return (
-      <>
-        <label htmlFor={ id }>
-          { label }
-        </label>
-        <textarea
+  return (
+    <>
+      <label htmlFor={ id }>
+        { label }
+      </label>
+      <textarea
         id={id}
         placeholder={ placeholder }
         maxLength={ maxLength || ""}
-        value={ this.state.value || ""}
-        onChange={ (e) => this.handleChange(e)}>
-        </textarea>
-      </>
-    )
-  }
+        value={ value || ""}
+        onChange={ (e) => handleChange(e) }
+      >
+      </textarea>
+    </>
+  )
 }
 
-export default Textarea
+export default Textarea;

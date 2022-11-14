@@ -1,47 +1,46 @@
-import React, {Component} from 'react';
+import React from 'react';
+
 import Input from './inputs/Input';
 
+const PictureForm = (props) => {
+  const {toggleEdit, handleSubmit} = props;
 
-class PictureForm extends Component {
-  constructor(props) {
-    super(props);
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const newUrl = document
+      .querySelector('#img-form input')
+      .value;
+
+    handleSubmit('photoUrl', newUrl);
+    toggleEdit();
   }
 
-  render() {
-    const {toggleEdit, handleSubmit} = this.props
-    return (
-      <div className="form">
-          <form id="img-form">
+  return (
+    <div className="form">
+        <form id="img-form">
 
-            <Input label={'Image\'s URL'}
-            type="url"
-            id="img-url"
-            placeholder="https://my-example-url.com/picture.jpg"/>
+          <Input label={'Image\'s URL'}
+          type="url"
+          id="img-url"
+          placeholder="https://my-example-url.com/picture.jpg"/>
 
-            <div className="flex-row">
-              <button className="button-cancel"
-                type="button"
-                onClick={toggleEdit}>
-                 Cancel
-              </button>
-              <button className="button-submit"
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const newUrl = document
-                    .querySelector('#img-form input')
-                    .value;
-                  handleSubmit('photoUrl', newUrl);
-                  toggleEdit();
-                }}>
-                Confirm
-              </button>
-            </div>
+          <div className="flex-row">
+            <button className="button-cancel"
+              type="button"
+              onClick={toggleEdit}>
+               Cancel
+            </button>
+            <button className="button-submit"
+              type="submit"
+              onClick={(e) => submitForm(e)}>
+              Confirm
+            </button>
+          </div>
 
-          </form>
-        </div>
-    )
-  }
-}
+        </form>
+      </div>
+  )
+} 
 
-export default PictureForm
+export default PictureForm;

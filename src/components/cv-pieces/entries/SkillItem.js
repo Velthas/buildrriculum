@@ -1,66 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import SkillsForm from '../../form/SkillsForm';
 
 import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
-class SkillItem extends Component {
-  constructor(props) {
-    super(props);
+const SkillItem = (props) => {
+  const { editSkill, deleteSkill, skill } = props;
 
-    this.state = {
-      edit: false,
-      icons: false,
-    };
+  const [edit, setEdit] = useState(false);
+  const [icons, setIcons] = useState(false);
 
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  const toggleEdit = () => { setEdit(!edit) };
+  const toggleIcons = (bool) => { setIcons(bool) };
 
-  toggleEdit() {
-    this.setState({ edit: !this.state.edit });
-  }
-
-  render() {
-    const { editSkill, deleteSkill, skill } = this.props;
-
-    return (
-      <>
+  return (
+    <>
         <li
-          onMouseEnter={() => this.setState({ icons: true })}
-          onMouseLeave={() => this.setState({ icons: false })}>
+          onMouseEnter={ () => toggleIcons(true) }
+          onMouseLeave={ () => toggleIcons(false) }
+        >
           <p>{skill.name}</p>
-          { this.state.icons
-            && (
+
+          { icons && (
             <div className="icon-container">
               <img
                 src={pencil}
                 className="edit-icon"
-                onClick={() => this.setState({ edit: true })}
+                onClick={toggleEdit}
               />
               
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={() => {
-                  deleteSkill('skills', skill.id);
-                }}
+                onClick={() => deleteSkill('skills', skill.id) }
               />
             </div>
-            )}
+          )}
         </li>
 
-        { this.state.edit
-          && (
+        { edit && (
           <SkillsForm
             handleSubmit={editSkill}
-            toggleEdit={this.toggleEdit}
+            toggleEdit={toggleEdit}
             skill={skill}
           />
           ) }
       </>
-    );
-  }
+  );
 }
 
 export default SkillItem;

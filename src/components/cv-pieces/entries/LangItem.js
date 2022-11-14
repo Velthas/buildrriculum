@@ -1,68 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import LanguageForm from '../../form/LanguageForm';
 
 import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
-class LangItem extends Component {
-  constructor(props) {
-    super(props);
+const LangItem = (props) => {
+  const { editLanguage, deleteLanguage, lang } = props;
 
-    this.state = {
-      edit: false,
-      icons: false,
-    };
+  const [edit, setEdit] = useState(false);
+  const [icons, setIcons] = useState(false);
 
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  const toggleEdit = () => { setEdit(!edit) }
+  const toggleIcons = (bool) => { setIcons(bool) }
 
-  toggleEdit() {
-    this.setState({ edit: !this.state.edit });
-  }
-
-  render() {
-    const { editLanguage, deleteLanguage, lang } = this.props;
-
-    return (
-      <>
+  return (
+    <>
         <li
-          onMouseEnter={() => this.setState({ icons: true })}
-          onMouseLeave={() => this.setState({ icons: false })}>
+          onMouseEnter={ () => toggleIcons(true) }
+          onMouseLeave={ () => toggleIcons(false) }
+        >
 
           <p>{lang.language + ' - ' + lang.fluency}</p>
 
-          { this.state.icons
-            && (
+          { icons && (
             <div className="icon-container">
               <img
                 src={pencil}
                 className="edit-icon"
-                onClick={() => this.setState({ edit: true })}
+                onClick={toggleEdit}
               />
               
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={() => {
-                  deleteLanguage('languages', lang.id);
-                }}
+                onClick={ () => deleteLanguage('languages', lang.id) }
               />
             </div>
-            )}
+          )}
         </li>
 
-        { this.state.edit
-          && (
+        { edit && (
           <LanguageForm
             handleSubmit={editLanguage}
-            toggleEdit={this.toggleEdit}
+            toggleEdit={toggleEdit}
             lang={lang}
           />
-          )}
-      </>
-    );
-  }
+        )}
+    </>
+  );
 }
 
 export default LangItem;

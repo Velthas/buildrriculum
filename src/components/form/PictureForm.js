@@ -23,6 +23,7 @@ const PictureForm = (props) => {
           <Input label={'Image\'s URL'}
           type="url"
           id="img-url"
+          length="3000"
           placeholder="https://my-example-url.com/picture.jpg"/>
 
           <div className="flex-row">

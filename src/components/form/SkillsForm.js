@@ -26,7 +26,7 @@ const SkillsForm = (props) => {
             type={'text'}
             id="skill-name"
             placeholder="Pizza Ingurgitation Specialist"
-            maxLength="25"
+            length="25"
             text={skill ? skill.name : ""}
           />
 

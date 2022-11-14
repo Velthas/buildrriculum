@@ -32,7 +32,7 @@ const EducationForm = (props) => {
           type={"text"}
           id="education-title"
           placeholder="MSc Rubik Cube Engineering"
-          maxLength="40"
+          length="40"
           text={education ? education.title : ""}
           />
 
@@ -40,7 +40,7 @@ const EducationForm = (props) => {
           type={"text"}
           id="institution"
           placeholder="Harvard University"
-          maxLength="40"
+          length="40"
           text={education ? education.institution : ""}
           />
 
@@ -48,7 +48,7 @@ const EducationForm = (props) => {
           type={"text"}
           id="start-ed"
           placeholder="12/05"
-          maxLength="11"
+          length="11"
           text={education ? education.start : ""}
           />
 
@@ -56,7 +56,7 @@ const EducationForm = (props) => {
           type={"text"}
           id="end-ed"
           placeholder="Ongoing"
-          maxLength="11"
+          length="11"
           text={education ? education.end : ""}
           />
 

@@ -32,7 +32,7 @@ const WorkForm = (props) => {
             type={"text"}
             id="position"
             placeholder="Pizza Ingurgitation Specialist"
-            maxLength="40"
+            length="40"
             text={work ? work.position : ""}
           />
 
@@ -40,7 +40,7 @@ const WorkForm = (props) => {
             type={"text"}
             id="company"
             placeholder="Awesome Pizza Place"
-            maxLength="30"
+            length="30"
             text={work ? work.company : ""}
           />
 
@@ -48,7 +48,7 @@ const WorkForm = (props) => {
             type={"text"}
             id="start"
             placeholder="12/05"
-            maxLength="11"
+            length="11"
             text={work ? work.start : ""}
           />
 
@@ -56,7 +56,7 @@ const WorkForm = (props) => {
             type={"text"}
             id="end"
             placeholder="Ongoing"
-            maxLength="11"
+            length="11"
             text={work ? work.end : ""}
           />
 

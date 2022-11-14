@@ -26,14 +26,14 @@ const NameForm = (props) => {
             type={"text"}
             id="person-name"
             placeholder="John Smith"
-            maxLength="30"
+            length="30"
           />
 
           <Input label={'Position'}
             type={"text"}
             id="person-role"
             placeholder="Executive Pizza Officer"
-            maxLength="50"
+            length="50"
           />
 
           <div className="flex-row">

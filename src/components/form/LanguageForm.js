@@ -27,7 +27,7 @@ const LanguageForm = (props) => {
             type={"text"}
             id="language-name"
             placeholder="English"
-            maxLength="30"
+            length="30"
             text={lang ? lang.language : ""}
           />
 
@@ -35,7 +35,7 @@ const LanguageForm = (props) => {
             type={"text"}
             id="language-fluency"
             placeholder="Fluent"
-            maxLength="30"
+            length="30"
             text={lang ? lang.fluency : ""}
           />
 

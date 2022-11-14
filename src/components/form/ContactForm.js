@@ -27,21 +27,21 @@ const ContactForm = (props) => {
             type={"tel"}
             id="contacts-tel"
             placeholder="3334445555"
-            maxLength="25"
+            length="25"
           />
 
           <Input label={'Email'}
             type={"email"}
             id="contacts-email"
             placeholder="example@provider.com"
-            maxLength="50"
+            length="50"
           />
 
           <Input label={'Website'}
             type={"url"}
             id="contacts-web"
             placeholder="github.com/myPage"
-            maxLength="50"
+            length="50"
           />
 
           <div className="flex-row">

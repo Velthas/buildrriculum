@@ -6,7 +6,7 @@ import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
 const WorkItem = (props) => {
-  const { editWork, deleteWork, work } = props;
+  const { editWork, deleteWork, work, setWork } = props;
 
   const [edit, setEdit] = useState(false);
   const [icons, setIcons] = useState(false);
@@ -41,7 +41,7 @@ const WorkItem = (props) => {
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={ () => deleteWork('work', work.id) }
+                onClick={ () => deleteWork(setWork, work.id) }
               />
 
             </div>
@@ -53,6 +53,7 @@ const WorkItem = (props) => {
             handleSubmit={editWork}
             toggleEdit={toggleEdit}
             work={work}
+            setWork={setWork}
           />
         )
         }

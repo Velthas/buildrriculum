@@ -5,7 +5,7 @@ import Input from './inputs/Input';
 import Textarea from './inputs/Textarea';
 
 const EducationForm = (props) => {
-  const {education, toggleEdit, handleSubmit} = props;
+  const {education, toggleEdit, handleSubmit, setEducation} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const EducationForm = (props) => {
       .value;
     const id = education ? education.id : uniqid();
 
-    handleSubmit('education', {title, institution, start, end, description, id});
+    handleSubmit(setEducation, {title, institution, start, end, description, id});
     toggleEdit();
   }
 
@@ -29,42 +29,43 @@ const EducationForm = (props) => {
         <form id="education-form">
 
           <Input label={'Education Title'}
-          type={"text"}
-          id="education-title"
-          placeholder="MSc Rubik Cube Engineering"
-          length="40"
-          text={education ? education.title : ""}
+            type={"text"}
+            id="education-title"
+            placeholder="MSc Rubik Cube Engineering"
+            length="40"
+            text={education ? education.title : ""}
           />
 
           <Input label={'Issuing Institution'}
-          type={"text"}
-          id="institution"
-          placeholder="Harvard University"
-          length="40"
-          text={education ? education.institution : ""}
+            type={"text"}
+            id="institution"
+            placeholder="Harvard University"
+            length="40"
+            text={education ? education.institution : ""}
           />
 
           <Input label={'Start Date'}
-          type={"text"}
-          id="start-ed"
-          placeholder="12/05"
-          length="11"
-          text={education ? education.start : ""}
+            type={"text"}
+            id="start-ed"
+            placeholder="12/05"
+            length="11"
+            text={education ? education.start : ""}
           />
 
           <Input label={'End Date'}
-          type={"text"}
-          id="end-ed"
-          placeholder="Ongoing"
-          length="11"
-          text={education ? education.end : ""}
+            type={"text"}
+            id="end-ed"
+            placeholder="Ongoing"
+            length="11"
+            text={education ? education.end : ""}
           />
 
           <Textarea label={'Profile Text'}
-          id="edu-description"
-          placeholder="This is where you insert information about your education venture: remember to keep it short and memorable, maybe use bullet points for brevity."
-          maxLength="500"
-          text={education ? education.description : ""} />
+            id="edu-description"
+            placeholder="This is where you insert information about your education venture: remember to keep it short and memorable, maybe use bullet points for brevity."
+            maxLength="500"
+            text={education ? education.description : ""} 
+          />
 
           <div className="flex-row">
             <button className="button-cancel"

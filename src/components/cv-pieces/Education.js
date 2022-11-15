@@ -1,66 +1,52 @@
-import React, {Component} from 'react';
-import uniqid from 'uniqid';
+import React, { useState } from 'react';
 
 import EducationItem from './entries/EducationItem';
 import EducationForm from '../form/EducationForm';
 
-import trashcan from '../../images/trashcan.svg';
+const Education = (props) => {
+  const { education, addEducation, editEducation, deleteEducation, callback} = props;
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+  const [buttons, setButtons] = useState(false);
+  const [add, setAdd] = useState(false);
 
-    this.state = {
-      buttons: false,
-      add: false,
-    };
+  const toggleAdd = () => setAdd(!add);
+  const toggleButtons = (bool) => setButtons(bool);
 
-    this.toggleAdd = this.toggleAdd.bind(this);
-  }
+  return (
+    <div className="cv-section flex-column education"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}>
 
-  toggleAdd() {
-    this.setState({
-      add: !this.state.add
-    })
-  }
+      { buttons &&
+       <button className="edit-button absolute-top-right"
+         onClick={toggleAdd}>
+          Add
+       </button> }
 
-  render() {
-    const {education, addEducation, deleteEducation, editEducation} = this.props;
+      <h3 className='section-header'>Education</h3>
 
-    return (
-      <div className="cv-section flex-column education"
-        onMouseEnter={() => this.setState({buttons: true})}
-        onMouseLeave={() => this.setState({buttons: false})}>
-
-        { this.state.buttons &&
-         <button className="edit-button absolute-top-right"
-           onClick={this.toggleAdd}>
-            Add
-         </button> }
-
-        <h3 className='section-header'>Education</h3>
-
-        <div>
-          { education.map((education) => {
-            return (
-              <EducationItem
+      <div>
+        { education.map((education) => {
+          return (
+            <EducationItem
               key={education.id}
               editEducation={editEducation}
               deleteEducation={deleteEducation}
               education={education}
-               />
-            )
-          })}
-        </div>
+              setEducation={callback}
+            />
+          )
+        })}
+      </div>
 
-        {this.state.add &&
-          <EducationForm 
+      { add &&
+        <EducationForm 
           handleSubmit={addEducation}
-          toggleEdit={this.toggleAdd}/>
-     }
-
-      </div>);
-  }
+          toggleEdit={toggleAdd}
+          setEducation={callback}/>
+      }
+    </div>
+  );
 }
 
 export default Education;

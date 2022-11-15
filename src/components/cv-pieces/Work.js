@@ -1,61 +1,56 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
 import WorkForm from '../form/WorkForm';
 import WorkItem from './entries/WorkItem';
 
-class Work extends Component {
-  constructor(props) {
-    super(props);
+const Work = (props) => {
+  const { work, addWork, editWork, deleteWork, callback} = props;
 
-    this.state = {
-      buttons: false,
-      add: false,
-    };
+  const [buttons, setButtons] = useState(false);
+  const [add, setAdd] = useState(false);
 
-    this.toggleAdd = this.toggleAdd.bind(this);
-  }
+  const toggleAdd = () => setAdd(!add);
+  const toggleButtons = (bool) => setButtons(bool);
 
-  toggleAdd() {
-    this.setState({
-      add: !this.state.add,
-    })
-  }
+  return (
+    <div
+      className="cv-section flex-column work"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(true)}>
 
-  render() {
-    const {work, addWork, deleteWork, editWork} = this.props;
+      { buttons &&
+       <button className="edit-button absolute-top-right"
+         onClick={toggleAdd}
+        >
+           Add
+        </button> }
 
-    return (
-      <div
-        className="cv-section flex-column work"
-        onMouseEnter={() => this.setState({buttons: true})}
-        onMouseLeave={() => this.setState({buttons: false})}>
+      <h3 className='section-header'>Work Experience</h3>
 
-        { this.state.buttons &&
-         <button className="edit-button absolute-top-right"
-           onClick={this.toggleAdd}>Add</button> }
-
-        <h3 className='section-header'>Work Experience</h3>
-
-        <div>
-          { work.map((experience) => {
-            return (
-              <WorkItem 
+      <div>
+        { work.map((experience) => {
+          return (
+            <WorkItem 
               editWork={editWork}
               deleteWork={deleteWork}
               work={experience}
-              key={experience.id} />
-            )
-          })}
-        </div>
+              key={experience.id}
+              setWork={callback}
+            />
+          )
+        })}
+      </div>
 
-        {this.state.add &&
-          <WorkForm
+      { add &&
+        <WorkForm
           handleSubmit={addWork}
-          toggleEdit={this.toggleAdd}
-          />  }
+          toggleEdit={toggleAdd}
+          setWork={callback}
+        />  
+      }
 
-      </div>);
-  }
+    </div>
+  );
 }
 
 export default Work;

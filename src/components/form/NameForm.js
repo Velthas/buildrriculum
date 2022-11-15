@@ -3,7 +3,7 @@ import React from 'react';
 import Input from './inputs/Input';
 
 const NameForm = (props) => {
-  const {toggleEdit, handleSubmit} = props;
+  const {toggleEdit, handleSubmit, setName} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -13,8 +13,7 @@ const NameForm = (props) => {
         .map((input) => input.value);
     const [userName, role] = info;
 
-    handleSubmit('name', userName);
-    handleSubmit('title', role);
+    handleSubmit(setName, [{name: userName, title: role}]);
     toggleEdit();
   }
 

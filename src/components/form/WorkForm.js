@@ -5,7 +5,7 @@ import Input from './inputs/Input';
 import Textarea from './inputs/Textarea';
 
 const WorkForm = (props) => {
-  const {work, toggleEdit, handleSubmit} = props;
+  const {work, toggleEdit, handleSubmit, setWork} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const WorkForm = (props) => {
       .value;
     const id = work ? work.id : uniqid();
 
-    handleSubmit('work', {position, company, start, end, description, id});
+    handleSubmit(setWork, {position, company, start, end, description, id});
     toggleEdit();
   }
 

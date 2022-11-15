@@ -1,50 +1,42 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
 import NameForm from '../form/NameForm';
 
-class Name extends Component {
-  constructor(props) {
-    super(props);
+const Name = (props) => {
+  const { info, changeInfo, callback} = props;
+  const { name, title } = info[0];
 
-    this.state = {
-      buttons: false,
-      edit: false,
-    };
+  const [buttons, setButtons] = useState(false);
+  const [edit, setEdit] = useState(false);
 
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  const toggleEdit = () => setEdit(!edit);
+  const toggleButtons = (bool) => setButtons(bool);
 
-  toggleEdit() {
-    this.setState({
-      edit: !this.state.edit,
-    });
-  }
+  return (
+    <div className="cv-section flex-column name"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}>
 
-  render() {
-    const {name, title, changeInfo} = this.props;
+      { buttons &&
+       <button className="edit-button absolute-top-right"
+          onClick={toggleEdit}
+        >
+          Modify
+       </button> }
 
-    return (
-      <div className="cv-section flex-column name"
-        onMouseEnter={() => this.setState({buttons: true})}
-        onMouseLeave={() => this.setState({buttons: false})}>
+      <h1>{name}</h1>
+      <h2>{title}</h2>
 
-        { this.state.buttons &&
-         <button className="edit-button absolute-top-right"
-           onClick={() => this.setState({edit: !this.state.edit})}>
-            Modify
-         </button> }
+      { edit &&
+       <NameForm
+        toggleEdit={toggleEdit}
+        handleSubmit={changeInfo}
+        setName={callback} 
+      /> 
+      }
+    </div>
+  );
 
-        <h1>{name}</h1>
-        <h2>{title}</h2>
-
-        {this.state.edit &&
-         <NameForm
-         toggleEdit={this.toggleEdit}
-         handleSubmit={changeInfo} /> 
-        }
-      </div>
-    );
-  }
 }
 
 export default Name;

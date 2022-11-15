@@ -9,38 +9,30 @@ class Cv extends Component {
     super(props);
   }
 
-  removeFromArray(arrName, id) {
-    const filteredCopy = [...this.state[arrName]].filter((element) => element.id !== id);
-    this.setState({
-      [arrName]: filteredCopy,
-    });
+  removeFromArray(stateSetter, id) {
+    stateSetter(prevState =>  prevState.filter((element) => element.id !== id));
   }
 
-  addToArray(arrName, obj) {
-    this.setState({
-      [arrName]: this.state[arrName].concat([obj]),
-    });
+  addToArray(stateSetter, obj) {
+    stateSetter(prevState =>  prevState.concat([obj]))
   }
 
-  changeInfo(varName, value) {
-    this.setState({
-      [varName]: value,
-    });
+  changeInfo(stateSetter, value) {
+    stateSetter(value);
   }
 
-  editEntry(varName, obj) {
-    const mappedArray = [...this.state[varName]]
-      .map((item) => {
-        if (item.id === obj.id) {
-          obj.id = uniqid();
-          return obj;
-        }
-        return item;
-      });
-
-    this.setState({
-      [varName]: mappedArray,
-    });
+  editEntry(stateSetter, obj) {
+    stateSetter(prevState => {
+      const mappedArray = [...prevState]
+        .map((item) => {
+          if (item.id === obj.id) {
+            obj.id = uniqid();
+            return obj;
+          }
+          return item;
+        });
+      return mappedArray;
+    })
   }
 
   render() {

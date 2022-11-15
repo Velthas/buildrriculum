@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 import Input from './inputs/Input';
 
 const LanguageForm = (props) => {
-  const {lang, toggleEdit, handleSubmit} = props;
+  const {lang, toggleEdit, handleSubmit, setLanguages} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const LanguageForm = (props) => {
     const [language, fluency] = info
     const id = lang ? lang.id : uniqid();
 
-    handleSubmit('languages', { language, fluency, id });
+    handleSubmit(setLanguages, { language, fluency, id });
     toggleEdit();
   }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import Eleanor from '../../images/eleanor.jpeg';
 
@@ -8,48 +8,61 @@ import Contacts from './Contacts';
 import Languages from './Languages';
 import Skills from './Skills';
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props)
+const Sidebar = (props) => {
+  const {changeInfo, addToArray, removeFromArray, editEntry} = props;
 
-    this.state = {
-      photoUrl: Eleanor,
-      profile: 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words. Go on and edit this with your own, relevant info!',
-      telephone: '000-000-0000',
-      mail: 'example@mail.org',
-      website: 'https://yourwebsite.com/',
-      languages: [{ language: 'English', fluency: 'Fluent', id: 0}],
-      skills: [
-        { name: 'Pizza Slice Juggler', id: 1},
-        { name: 'Moderately useful skill', id: 2},
-        { name: 'Procastinating', id: 3}
-      ]
-    }
+  const profilePlaceholder = 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words. Go on and edit this with your own, relevant info!'
+  const contactsPlaceholder = [
+    { telephone: '000-000-0000',
+    mail: 'example@mail.org',
+    website: 'https://yourwebsite.com/' }
+  ]
+  const languagesPlaceholder = [
+     { language: 'English', fluency: 'Fluent', id: 0}
+  ]
+  const skillsPlaceholder = [
+    { name: 'Pizza Slice Juggler', id: 1},
+    { name: 'Moderately useful skill', id: 2},
+    { name: 'Procastinating', id: 3}
+  ]
+  
+  const [photo, setPhoto] = useState(Eleanor);
+  const [profile, setProfile] = useState(profilePlaceholder);
+  const [contacts, setContacts] = useState(contactsPlaceholder);
+  const [languages, setLanguages] = useState(languagesPlaceholder);
+  const [skills, setSkills] = useState(skillsPlaceholder);
 
-    this.changeInfo = this.props.changeInfo.bind(this);
-    this.addToArray = this.props.addToArray.bind(this);
-    this.removeFromArray = this.props.removeFromArray.bind(this);
-    this.editEntry = this.props.editEntry.bind(this);
-  }
-
-  render() {
-    return <div id="sidebar" className="flex-column centered">
-      <Picture imgUrl={this.state.photoUrl} changeInfo={this.changeInfo}/>
-      <Profile profile={this.state.profile} changeInfo={this.changeInfo} />
-      <Contacts telephone={this.state.telephone}
-        mail={this.state.mail}
-        website={this.state.website}
-        changeInfo={this.changeInfo} />
-      <Skills skills={this.state.skills}
-        addSkill={this.addToArray}
-        deleteSkill={this.removeFromArray}
-        editSkill={this.editEntry} />
-      <Languages languages={this.state.languages}
-        addLanguage={this.addToArray}
-        editLanguage={this.editEntry}
-        deleteLanguage={this.removeFromArray} />
+  return <div id="sidebar" className="flex-column centered">
+      <Picture 
+        imgUrl={photo} 
+        changeInfo={changeInfo}
+        callback={setPhoto}
+      />
+      <Profile 
+        profile={profile} 
+        changeInfo={changeInfo} 
+        callback={setProfile}
+      />
+      <Contacts 
+        contacts={contacts}
+        changeInfo={changeInfo}
+        callback={setContacts}
+      />
+      <Skills 
+        skills={skills}
+        addSkill={addToArray}
+        deleteSkill={removeFromArray}
+        editSkill={editEntry}
+        callback={setSkills}
+      />
+      <Languages
+        languages={languages}
+        addLanguage={addToArray}
+        editLanguage={editEntry}
+        deleteLanguage={removeFromArray}
+        callback={setLanguages}
+      />
     </div>
-  }
 }
 
 export default Sidebar;

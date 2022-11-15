@@ -1,54 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+
 import ProfileForm from '../form/ProfileForm';
 
-class Profile extends Component {
-  constructor(props) {
-    super(props);
+const Profile = (props) => {
+  const { profile, changeInfo, callback } = props;
 
-    this.state = {
-      edit: false,
-      buttons: false,
-    };
+  const [edit, setEdit] = useState(false);
+  const [buttons, setButtons] = useState(false);
 
-    this.changeInfo = this.props.changeInfo;
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  const toggleEdit = () => setEdit(!edit);
+  const toggleButtons = (bool) => setButtons(bool);
 
-  toggleEdit() {
-    this.setState({ edit: !this.state.edit });
-  }
+  return (
+    <div
+      className="cv-section flex-column centered-both"
+      onMouseEnter={ () => toggleButtons(true) }
+      onMouseLeave={ () => toggleButtons(false) }
+    >
 
-  render() {
-    return (
-      <div
-        className="cv-section flex-column centered-both"
-        onMouseEnter={() => this.setState({ buttons: true })}
-        onMouseLeave={() => this.setState({ buttons: false })}
-      >
+      { buttons && (
+        <button
+          className="edit-button absolute-top-right"
+          onClick={toggleEdit}
+        >
+          Modify
+        </button>
+        ) 
+      }
 
-        { this.state.buttons
-         && (
-         <button
-           className="edit-button absolute-top-right"
-           onClick={() => this.setState({ edit: !this.state.edit })}
-         >
-           Modify
-         </button>
-         ) }
+      <h3 className="section-header">Profile</h3>
+      <p className="section-paragraph">{profile}</p>
 
-        <h3 className="section-header">Profile</h3>
-        <p className="section-paragraph">{this.props.profile}</p>
-
-        { this.state.edit
-          && (
-          <ProfileForm
-            toggleEdit={this.toggleEdit}
-            handleSubmit={this.changeInfo}
-          />
-          ) }
-      </div>
-    );
-  }
+      { edit && (
+        <ProfileForm
+          toggleEdit={toggleEdit}
+          handleSubmit={changeInfo}
+          setProfile={callback}
+        />
+        )
+      }
+    </div>
+  );
 }
 
 export default Profile;

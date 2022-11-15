@@ -1,65 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import SkillsForm from '../form/SkillsForm';
 import SkillItem from './entries/SkillItem';
 
-class Skills extends Component {
-  constructor(props) {
-    super(props);
+const Skills = (props) => {
+  const {skills, addSkill, editSkill, deleteSkill, callback} = props;
 
-    this.state = {
-      add: false,
-      buttons: false,
-    };
+  const [add, setAdd] = useState(false);
+  const [buttons, setButtons] = useState(false);
 
-    this.toggleAdd = this.toggleAdd.bind(this);
-  }
+  const toggleAdd = () => setAdd(!add);
+  const toggleButtons = (bool) => setButtons(bool);
 
-  toggleAdd() {
-    this.setState({ add: !this.state.add });
-  }
+  return (
+    <div
+      className="cv-section flex-column centered-both languages"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}>
 
-  render() {
-    const {editSkill, addSkill, deleteSkill} = this.props;
+      { buttons && (
+        <button
+          className="edit-button absolute-top-right"
+          onClick={toggleAdd}
+        >
+          Add
+        </button>
+        ) 
+      }
 
-    return (
-      <div
-        className="cv-section flex-column centered-both languages"
-        onMouseEnter={() => this.setState({ buttons: true })}
-        onMouseLeave={() => this.setState({ buttons: false })}>
+      <h3 className="section-header">Skills</h3>
 
-        { this.state.buttons
-         && (
-         <button
-           className="edit-button absolute-top-right"
-           onClick={() => this.setState({ add: !this.state.add })}>
-           Add
-         </button>
-         ) }
+      <ul>
+        {skills.map((skill) => (
+          <SkillItem
+            editSkill={editSkill}
+            deleteSkill={deleteSkill}
+            skill={skill}
+            key={skill.id}
+            setSkill={callback}
+          />
+        ))}
+      </ul>
 
-        <h3 className="section-header">Skills</h3>
+      { add && (
+          <SkillsForm
+            handleSubmit={addSkill}
+            toggleEdit={toggleAdd}
+            setSkill={callback}
+          />
+        ) 
+      }
 
-        <ul>
-          {this.props.skills.map((skill) => (
-            <SkillItem
-              editSkill={editSkill}
-              deleteSkill={deleteSkill}
-              skill={skill}
-              key={skill.id}/>
-          ))}
-        </ul>
-
-        { this.state.add
-        && (
-        <SkillsForm
-          handleSubmit={addSkill}
-          toggleEdit={this.toggleAdd}
-        />
-        ) }
-
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Skills;

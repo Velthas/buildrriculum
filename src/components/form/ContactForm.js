@@ -3,7 +3,7 @@ import React from 'react';
 import Input from './inputs/Input';
 
 const ContactForm = (props) => {
-  const {toggleEdit, handleSubmit} = props;
+  const {toggleEdit, handleSubmit, setContacts} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -11,11 +11,8 @@ const ContactForm = (props) => {
     const info = Array
       .from(document.querySelectorAll('#contacts-form input'))
       .map((input) => input.value);
-    const [telInfo, mailInfo, siteInfo] = info;
-
-    handleSubmit('telephone', telInfo);
-    handleSubmit('mail', mailInfo);
-    handleSubmit('website', siteInfo);
+    const [telephone, mail, website] = info;
+    handleSubmit(setContacts, [{telephone, mail, website}]);
     toggleEdit();
   }
 

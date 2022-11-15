@@ -1,45 +1,37 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
+
 import PictureForm from '../form/PictureForm';
 
-class Picture extends Component {
-  constructor(props) {
-    super(props);
+const Picture = (props) => {
+  const {changeInfo, imgUrl, callback} = props;
 
-    this.state = {
-      edit: false,
-      buttons: false,
-    };
+  const [edit, setEdit] = useState(false);
+  const [buttons, setButtons] = useState(false);
 
-    this.changeInfo = this.props.changeInfo;
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  const toggleEdit = () => setEdit(!edit);
+  const toggleButtons = (bool) => setButtons(bool)
 
-  toggleEdit() {
-    this.setState({edit: !this.state.edit});
-  }
-
-  render() {
     return (
       <div className="cv-section flex-row centered-both cv-image"
-        onMouseEnter={() => this.setState({buttons: true})}
-        onMouseLeave={() => this.setState({buttons: false})}>
+        onMouseEnter={() => toggleButtons(true)}
+        onMouseLeave={() => toggleButtons(false)}>
 
-        { this.state.buttons &&
+        { buttons &&
          <button className="edit-button absolute-top-right"
-           onClick={() => this.setState({edit: !this.state.edit})}>
+           onClick={() => toggleEdit()}>
             Modify
          </button> }
 
-        <img src={this.props.imgUrl}></img>
+        <img src={imgUrl}></img>
 
-        { this.state.edit &&
+        { edit &&
         <PictureForm 
-        toggleEdit={this.toggleEdit}
-        handleSubmit={this.props.changeInfo} /> }
+        toggleEdit={toggleEdit}
+        handleSubmit={changeInfo}
+        setPicture={callback} /> }
 
       </div>
     );
-  }
 }
 
 export default Picture;

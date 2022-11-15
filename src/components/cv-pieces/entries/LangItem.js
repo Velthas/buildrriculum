@@ -6,7 +6,7 @@ import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
 const LangItem = (props) => {
-  const { editLanguage, deleteLanguage, lang } = props;
+  const { editLanguage, deleteLanguage, lang, setLanguages } = props;
 
   const [edit, setEdit] = useState(false);
   const [icons, setIcons] = useState(false);
@@ -34,7 +34,7 @@ const LangItem = (props) => {
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={ () => deleteLanguage('languages', lang.id) }
+                onClick={ () => deleteLanguage(setLanguages, lang.id) }
               />
             </div>
           )}
@@ -45,6 +45,7 @@ const LangItem = (props) => {
             handleSubmit={editLanguage}
             toggleEdit={toggleEdit}
             lang={lang}
+            setLanguages={setLanguages}
           />
         )}
     </>

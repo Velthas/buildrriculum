@@ -6,7 +6,7 @@ import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
 const SkillItem = (props) => {
-  const { editSkill, deleteSkill, skill } = props;
+  const { editSkill, deleteSkill, skill, setSkill } = props;
 
   const [edit, setEdit] = useState(false);
   const [icons, setIcons] = useState(false);
@@ -33,7 +33,7 @@ const SkillItem = (props) => {
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={() => deleteSkill('skills', skill.id) }
+                onClick={() => deleteSkill(setSkill, skill.id) }
               />
             </div>
           )}
@@ -44,6 +44,7 @@ const SkillItem = (props) => {
             handleSubmit={editSkill}
             toggleEdit={toggleEdit}
             skill={skill}
+            setSkill={setSkill}
           />
           ) }
       </>

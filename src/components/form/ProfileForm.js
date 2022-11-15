@@ -2,7 +2,7 @@ import React from 'react';
 import Textarea from './inputs/Textarea';
 
 const ProfileForm = (props) => {
-  const {toggleEdit, handleSubmit} = props;
+  const {toggleEdit, handleSubmit, setProfile} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -11,7 +11,7 @@ const ProfileForm = (props) => {
       .querySelector('#profile-form textarea')
       .value;
 
-    handleSubmit('profile', text);
+    handleSubmit(setProfile, text);
     toggleEdit();
   }
 

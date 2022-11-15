@@ -3,7 +3,7 @@ import React from 'react';
 import Input from './inputs/Input';
 
 const PictureForm = (props) => {
-  const {toggleEdit, handleSubmit} = props;
+  const {toggleEdit, handleSubmit, setPicture} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ const PictureForm = (props) => {
       .querySelector('#img-form input')
       .value;
 
-    handleSubmit('photoUrl', newUrl);
+    handleSubmit(setPicture, newUrl);
     toggleEdit();
   }
 

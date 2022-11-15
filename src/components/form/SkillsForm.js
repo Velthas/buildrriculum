@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 import Input from './inputs/Input';
 
 const SkillsForm = (props) => {
-  const {toggleEdit, handleSubmit, skill} = props;
+  const {toggleEdit, handleSubmit, skill, setSkill} = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ const SkillsForm = (props) => {
       .value;
     const id = skill ? skill.id : uniqid();
 
-    handleSubmit('skills', {name, id});
+    handleSubmit(setSkill, {name, id});
     toggleEdit();
   }
   

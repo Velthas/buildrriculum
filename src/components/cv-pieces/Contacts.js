@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
 import ContactForm from '../form/ContactForm';
 
@@ -6,65 +6,61 @@ import email from '../../images/mail.svg';
 import web from '../../images/web.svg';
 import smartphone from '../../images/smartphone.svg';
 
-class Contacts extends Component {
-  constructor(props) {
-    super(props);
+const Contacts = (props) => {
+  const {contacts, changeInfo, callback} = props;
+  const {telephone, mail, website} = contacts[0];
 
-    this.state = {
-      edit: false,
-      buttons: false,
-    };
+  const [edit, setEdit] = useState(false);
+  const [buttons, setButtons] = useState(false);
 
-    this.toggleEdit = this.toggleEdit.bind(this)
-  }
+  const toggleEdit = () => setEdit(!edit);
+  const toggleButtons = (bool) => setButtons(bool);
 
-  toggleEdit() {
-    this.setState({
-      edit: !this.state.edit
-    })
-  }
+  return (
+    <div className="cv-section flex-column centered-both contacts"
+      onMouseEnter={() => toggleButtons(true) }
+      onMouseLeave={() => toggleButtons(false) }>
 
-  render() {
-    const {telephone, mail, website, changeInfo} = this.props;
-
-    return (
-      <div className="cv-section flex-column centered-both contacts"
-        onMouseEnter={() => this.setState({buttons: true})}
-        onMouseLeave={() => this.setState({buttons: false})}>
-
-        { this.state.buttons &&
+      { buttons &&
         <button className="edit-button absolute-top-right"
-          onClick={() => this.setState({edit: !this.state.edit})}>
-           Modify
-        </button> }
+          onClick={toggleEdit}>
+          Modify
+        </button> 
+      }
 
-        <h3 className="section-header">Contacts</h3>
-        <ul>
-          { telephone !== '' &&
-          <li className="flex-row">
-            <img src={ smartphone } alt="Mobile Icon"></img>
-            <p>{ telephone }</p>
-          </li> }
-          { mail !== '' &&
-          <li className="flex-row">
-            <img src={ email } alt="Mail Icon"></img>
-            <p> { mail } </p>
-          </li> }
-          { website !== '' &&
-          <li className="flex-row">
-            <img src={ web } alt="Website Icon"></img>
-            <a href={ website }>{ website }</a>
-          </li> }
-        </ul>
+      <h3 className="section-header">Contacts</h3>
 
-        { this.state.edit &&
-          <ContactForm
+      <ul>
+
+        { telephone !== '' &&
+        <li className="flex-row">
+          <img src={ smartphone } alt="Mobile Icon"></img>
+          <p>{ telephone }</p>
+        </li> }
+
+        { mail !== '' &&
+        <li className="flex-row">
+          <img src={ email } alt="Mail Icon"></img>
+          <p> { mail } </p>
+        </li> }
+
+        { website !== '' &&
+        <li className="flex-row">
+          <img src={ web } alt="Website Icon"></img>
+          <a href={ website }>{ website }</a>
+        </li> }
+      </ul>
+
+      { edit &&
+        <ContactForm
           handleSubmit={changeInfo}
-          toggleEdit={this.toggleEdit} /> }
+          toggleEdit={toggleEdit}
+          setContacts={callback}
+        />   
+      }
 
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Contacts;

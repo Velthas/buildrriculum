@@ -1,27 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import uniqid from 'uniqid';
+
 import Background from '../cv-pieces/Background';
 import Sidebar from '../cv-pieces/Sidebar';
 
-class Cv extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Cv = () => {
+  const removeFromArray = (stateSetter, id) => stateSetter(prevState =>
+      prevState.filter((element) => element.id !== id));
+  
+  const addToArray = (stateSetter, obj) => stateSetter(prevState =>  prevState.concat([obj]));
 
-  removeFromArray(stateSetter, id) {
-    stateSetter(prevState =>  prevState.filter((element) => element.id !== id));
-  }
+  const changeInfo = (stateSetter, value) => stateSetter(value);
 
-  addToArray(stateSetter, obj) {
-    stateSetter(prevState =>  prevState.concat([obj]))
-  }
-
-  changeInfo(stateSetter, value) {
-    stateSetter(value);
-  }
-
-  editEntry(stateSetter, obj) {
+  const editEntry = (stateSetter, obj) => {
     stateSetter(prevState => {
       const mappedArray = [...prevState]
         .map((item) => {
@@ -35,24 +27,28 @@ class Cv extends Component {
     })
   }
 
+  return (
+    <div className="flex-row" id="cv-container">
+      <Sidebar
+        changeInfo={changeInfo}
+        addToArray={addToArray}
+        removeFromArray={removeFromArray}
+        editEntry={editEntry}
+      />
+      <Background
+        changeInfo={changeInfo}
+        addToArray={addToArray}
+        editEntry={editEntry}
+        removeFromArray={removeFromArray}
+      />
+    </div>
+  );
+}
+
+class WrappedCv extends React.Component {
   render() {
-    return (
-      <div className="flex-row" id="cv-container">
-        <Sidebar
-          changeInfo={this.changeInfo}
-          addToArray={this.addToArray}
-          removeFromArray={this.removeFromArray}
-          editEntry={this.editEntry}
-        />
-        <Background
-          changeInfo={this.changeInfo}
-          addToArray={this.addToArray}
-          editEntry={this.editEntry}
-          removeFromArray={this.removeFromArray}
-        />
-      </div>
-    );
+    return <Cv/>
   }
 }
 
-export default Cv;
+export default WrappedCv;

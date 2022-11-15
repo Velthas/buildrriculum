@@ -1,53 +1,37 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from "react-dom/client";
 
-import Cv from './components/sections/Cv';
+import WrappedCv from './components/sections/Cv';
 import Header from './components/sections/Header';
 import Palette from'./components/sections/Palette';
 import Footer from'./components/sections/Footer';
 
-import ReactToPrint from 'react-to-print';
+import { useReactToPrint } from 'react-to-print';
 
 import './styles/cv.css';
 import './styles/form.css';
 import './styles/shared.css';
 import './styles/palette.css';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
-    this.profileUrl = 'https://github.com/Velthas';
-    this.codeUrl = 'https://github.com/Velthas/buildrriculum'
-    this.palette = [
-      {name: 'Pea', hex: '#678870' },
-      {name: 'Navy', hex: '#465591' },
-      {name: 'Lilac', hex: '#6b6788' },
-      {name: 'Saffron', hex: '#b7995f' },
-      {name: 'Brick', hex: '#914646' },
-    ]
-  }
-
-  render() {
-    return (
+  return (
     <>
-      <Header name="BUILDRRICULUM" class="flex-row centered-both" />
-      <Palette classes="flex-column centered-both" palette={this.palette} />
+      <Header name="BUILDRRICULUM" classes="flex-row centered-both" />
+      <Palette classes="flex-column centered-both" />
       <div id="backdrop"> 
-        <Cv ref={(element) => this.cvReference = element }/>
+        <WrappedCv ref={componentRef}/>
       </div>
       <div className="flex-row centered-both">
-        <ReactToPrint
-        content={() => this.cvReference}
-        trigger={() => <button className="print-to-pdf">SAVE AS PDF</button> } />
+        <button onClick={handlePrint} className="print-to-pdf">SAVE AS PDF</button> 
       </div>
-      <Footer author="Velthas"
-        class="footer flex-row centered-both"
-        profile={this.profileUrl}
-        code={this.codeUrl} />
+      <Footer classes="footer flex-row centered-both"/>
     </>
     )
-  }
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

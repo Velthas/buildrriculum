@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Footer extends Component {
-  constructor(props) {
-    super(props)
-  }
+const Footer = (props) => {
+  const {classes} = props
 
-  render() {
-    return (
-    <div className={this.props.class || ""} id="footer">
+  const profileUrl = 'https://github.com/Velthas';
+  const codeUrl = 'https://github.com/Velthas/buildrriculum';
+  const author = 'Velthas'
+
+  return (
+    <div className={classes || ""} id="footer">
       <p>Coded by
-        <a href={this.props.profile}> {this.props.author}</a> 2022.
-       Source code <a href={this.props.code}>here</a>.
+        <a href={profileUrl}> {author}</a> 2022.
+       Source code <a href={codeUrl}>here</a>.
       </p>
     </div>
-    )
-  }
+  )
 }
 
 export default Footer;

@@ -1,49 +1,45 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
-import Input from '../form/inputs/Input';
+const Palette = (props) => {
+  const {classes} = props;
 
-class Palette extends Component {
-  constructor(props) {
-    super(props);
+  const paletteArray = [
+    {name: 'Pea', hex: '#678870' },
+    {name: 'Navy', hex: '#465591' },
+    {name: 'Lilac', hex: '#6b6788' },
+    {name: 'Saffron', hex: '#b7995f' },
+    {name: 'Brick', hex: '#914646' },
+  ]
 
-    this.state = {
-      customColor: '#678870'
-    }
-  }
+  const [color, setColor] = useState('#678870');
 
-  setTheme(theme) {
+  const setTheme = (theme) => {
     const cv = document.querySelector('#cv-container');
     cv.setAttribute('style', '');
     cv.setAttribute('class', `flex-row ${theme}`);
-
+  
     const root = document.querySelector('html');
     root.setAttribute('style', '');
     root.setAttribute('class', `${theme}`);
   }
 
-  handleChange(event) {
-    this.setState({
-      customColor: event.target.value,
-    })
+  const handleChange = (e) => {
+    setColor(e.target.value)
 
     const cv = document.querySelector('#cv-container');
-    cv.setAttribute('style', `--sidebar-background: ${this.state.customColor}`);
+    cv.setAttribute('style', `--sidebar-background: ${color}`);
       
     const root = document.querySelector('html');
-    root.setAttribute('style', `--sidebar-background: ${this.state.customColor}`)
+    root.setAttribute('style', `--sidebar-background: ${color}`)
   }
 
-  render() {
-
-    const {classes, palette} = this.props;
-
-    return (
+  return (
     <div className={classes} id="palette">
       <div className="palette-container">
-        { palette.map(color => {
+        { paletteArray.map(color => {
             return (
               <div className="color-container" 
-              onClick={() => this.setTheme((color.name).toLowerCase())}>
+              onClick={() => setTheme((color.name).toLowerCase())}>
                 <div className="color-sample" style={{"backgroundColor": color.hex }}></div>
                 <div className="color-info">
                   <p className="color-name">{color.name}</p>
@@ -58,15 +54,15 @@ class Palette extends Component {
         <p>{"Choose a preset color from above or pick your own by clicking the tile below!"}</p>
         <div className="picker-container">
           <input
-          type={'color'}
-          value={this.state.customColor}
-          onChange={(e) => { this.handleChange(e) }}> 
+            type={'color'}
+            value={color}
+            onChange={(e) => { handleChange(e) }}
+          > 
           </input>
         </div>
       </div>
     </div>
     )
-  }
 }
 
 export default Palette;

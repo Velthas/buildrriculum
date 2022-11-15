@@ -5,8 +5,10 @@ import WorkForm from '../../form/WorkForm';
 import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
-const WorkItem = (props) => {
-  const { editWork, deleteWork, work, setWork } = props;
+function WorkItem(props) {
+  const {
+    editWork, deleteWork, work, setWork,
+  } = props;
 
   const [edit, setEdit] = useState(false);
   const [icons, setIcons] = useState(false);
@@ -16,19 +18,20 @@ const WorkItem = (props) => {
 
   return (
     <>
-        <div className="work-entry flex-column"
-          onMouseEnter={() => toggleIcons(true)}
-          onMouseLeave={() => toggleIcons(false)}
-        >
+      <div
+        className="work-entry flex-column"
+        onMouseEnter={() => toggleIcons(true)}
+        onMouseLeave={() => toggleIcons(false)}
+      >
 
-          <h4>{work.position}</h4>
-          <div className="flex-row space-between job-info">
-            <p>{work.company}</p>
-            <p>{work.start + ' - ' + work.end}</p>
-          </div>
-          <p>{ work.description }</p>
+        <h4>{work.position}</h4>
+        <div className="flex-row space-between job-info">
+          <p>{work.company}</p>
+          <p>{`${work.start} - ${work.end}`}</p>
+        </div>
+        <p>{ work.description }</p>
 
-          { icons
+        { icons
             && (
             <div className="icon-container absolute-position absolute-bottom-right">
 
@@ -37,28 +40,27 @@ const WorkItem = (props) => {
                 className="edit-icon"
                 onClick={toggleEdit}
               />
-              
+
               <img
                 src={trashcan}
                 className="edit-icon"
-                onClick={ () => deleteWork(setWork, work.id) }
+                onClick={() => deleteWork(setWork, work.id)}
               />
 
             </div>
             )}
-          </div>
+      </div>
 
-        { edit && (
-          <WorkForm
-            handleSubmit={editWork}
-            toggleEdit={toggleEdit}
-            work={work}
-            setWork={setWork}
-          />
-        )
-        }
+      { edit && (
+      <WorkForm
+        handleSubmit={editWork}
+        toggleEdit={toggleEdit}
+        work={work}
+        setWork={setWork}
+      />
+      )}
     </>
-  )
+  );
 }
 
 export default WorkItem;

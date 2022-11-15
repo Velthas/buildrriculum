@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ProfileForm from '../form/ProfileForm';
 
-const Profile = (props) => {
+function Profile(props) {
   const { profile, changeInfo, callback } = props;
 
   const [edit, setEdit] = useState(false);
@@ -14,8 +14,8 @@ const Profile = (props) => {
   return (
     <div
       className="cv-section flex-column centered-both"
-      onMouseEnter={ () => toggleButtons(true) }
-      onMouseLeave={ () => toggleButtons(false) }
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}
     >
 
       { buttons && (
@@ -25,8 +25,7 @@ const Profile = (props) => {
         >
           Modify
         </button>
-        ) 
-      }
+      )}
 
       <h3 className="section-header">Profile</h3>
       <p className="section-paragraph">{profile}</p>
@@ -37,8 +36,7 @@ const Profile = (props) => {
           handleSubmit={changeInfo}
           setProfile={callback}
         />
-        )
-      }
+      )}
     </div>
   );
 }

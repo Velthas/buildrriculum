@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import LangItem from './entries/LangItem';
 import LanguageForm from '../form/LanguageForm';
 
-const Languages = (props) => {
-  const {languages, addLanguage, editLanguage, deleteLanguage, callback} = props;
+function Languages(props) {
+  const {
+    languages, addLanguage, editLanguage, deleteLanguage, callback,
+  } = props;
 
   const [edit, setEdit] = useState(false);
   const [buttons, setButtons] = useState(false);
@@ -13,42 +15,46 @@ const Languages = (props) => {
   const toggleButtons = (bool) => setButtons(bool);
 
   return (
-    <div className="cv-section flex-column centered-both languages"
-      onMouseEnter={ () => toggleButtons(true) }
-      onMouseLeave={ () => toggleButtons(false) }>
+    <div
+      className="cv-section flex-column centered-both languages"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}
+    >
 
-      { buttons &&
-       <button className="edit-button absolute-top-right"
-         onClick={toggleEdit}>
-          Add
-       </button> }
+      { buttons
+       && (
+       <button
+         className="edit-button absolute-top-right"
+         onClick={toggleEdit}
+       >
+         Add
+       </button>
+       ) }
 
       <h3 className="section-header">Languages</h3>
 
       <ul>
 
-        { languages.map((lang) => {
-          return (
-              <LangItem
-                editLanguage={editLanguage}
-                deleteLanguage={deleteLanguage}
-                lang={lang}
-                key={lang.id}
-                setLanguages={callback}
-              /> 
-            )
-          })
-        }
+        { languages.map((lang) => (
+          <LangItem
+            editLanguage={editLanguage}
+            deleteLanguage={deleteLanguage}
+            lang={lang}
+            key={lang.id}
+            setLanguages={callback}
+          />
+        ))}
 
       </ul>
 
-      { edit &&
+      { edit
+        && (
         <LanguageForm
           handleSubmit={addLanguage}
           toggleEdit={toggleEdit}
           setLanguages={callback}
         />
-      }
+        )}
 
     </div>
   );

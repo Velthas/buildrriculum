@@ -8,47 +8,52 @@ import Contacts from './Contacts';
 import Languages from './Languages';
 import Skills from './Skills';
 
-const Sidebar = (props) => {
-  const {changeInfo, addToArray, removeFromArray, editEntry} = props;
+function Sidebar(props) {
+  const {
+    changeInfo, addToArray, removeFromArray, editEntry,
+  } = props;
 
-  const profilePlaceholder = 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words. Go on and edit this with your own, relevant info!'
+  const profilePlaceholder = 'This is a description. You may wonder what it describes, or what even is its purpose in life, but truth is, I am not yet ready to disclose that information: in short, what should be a brief, informative paragraph, really has become a long, condescending, pedantic gathering of words. Go on and edit this with your own, relevant info!';
   const contactsPlaceholder = [
-    { telephone: '000-000-0000',
-    mail: 'example@mail.org',
-    website: 'https://yourwebsite.com/' }
-  ]
+    {
+      telephone: '000-000-0000',
+      mail: 'example@mail.org',
+      website: 'https://yourwebsite.com/',
+    },
+  ];
   const languagesPlaceholder = [
-     { language: 'English', fluency: 'Fluent', id: 0}
-  ]
+    { language: 'English', fluency: 'Fluent', id: 0 },
+  ];
   const skillsPlaceholder = [
-    { name: 'Pizza Slice Juggler', id: 1},
-    { name: 'Moderately useful skill', id: 2},
-    { name: 'Procastinating', id: 3}
-  ]
-  
+    { name: 'Pizza Slice Juggler', id: 1 },
+    { name: 'Moderately useful skill', id: 2 },
+    { name: 'Procastinating', id: 3 },
+  ];
+
   const [photo, setPhoto] = useState(Eleanor);
   const [profile, setProfile] = useState(profilePlaceholder);
   const [contacts, setContacts] = useState(contactsPlaceholder);
   const [languages, setLanguages] = useState(languagesPlaceholder);
   const [skills, setSkills] = useState(skillsPlaceholder);
 
-  return <div id="sidebar" className="flex-column centered">
-      <Picture 
-        imgUrl={photo} 
+  return (
+    <div id="sidebar" className="flex-column centered">
+      <Picture
+        imgUrl={photo}
         changeInfo={changeInfo}
         callback={setPhoto}
       />
-      <Profile 
-        profile={profile} 
-        changeInfo={changeInfo} 
+      <Profile
+        profile={profile}
+        changeInfo={changeInfo}
         callback={setProfile}
       />
-      <Contacts 
+      <Contacts
         contacts={contacts}
         changeInfo={changeInfo}
         callback={setContacts}
       />
-      <Skills 
+      <Skills
         skills={skills}
         addSkill={addToArray}
         deleteSkill={removeFromArray}
@@ -63,6 +68,7 @@ const Sidebar = (props) => {
         callback={setLanguages}
       />
     </div>
+  );
 }
 
 export default Sidebar;

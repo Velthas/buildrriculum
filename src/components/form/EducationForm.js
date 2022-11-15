@@ -4,14 +4,15 @@ import uniqid from 'uniqid';
 import Input from './inputs/Input';
 import Textarea from './inputs/Textarea';
 
-const EducationForm = (props) => {
-  const {education, toggleEdit, handleSubmit, setEducation} = props;
+function EducationForm(props) {
+  const {
+    education, toggleEdit, handleSubmit, setEducation,
+  } = props;
 
   const submitForm = (e) => {
     e.preventDefault();
 
-    const info =
-      Array.from(document.querySelectorAll('#education-form input'))
+    const info = Array.from(document.querySelectorAll('#education-form input'))
       .map((input) => input.value);
     const [title, institution, start, end] = info;
 
@@ -20,72 +21,81 @@ const EducationForm = (props) => {
       .value;
     const id = education ? education.id : uniqid();
 
-    handleSubmit(setEducation, {title, institution, start, end, description, id});
+    handleSubmit(setEducation, {
+      title, institution, start, end, description, id,
+    });
     toggleEdit();
-  }
+  };
 
   return (
     <div className="form absolute-top-right">
-        <form id="education-form">
+      <form id="education-form">
 
-          <Input label={'Education Title'}
-            type={"text"}
-            id="education-title"
-            placeholder="MSc Rubik Cube Engineering"
-            length="40"
-            text={education ? education.title : ""}
-          />
+        <Input
+          label="Education Title"
+          type="text"
+          id="education-title"
+          placeholder="MSc Rubik Cube Engineering"
+          length="40"
+          text={education ? education.title : ''}
+        />
 
-          <Input label={'Issuing Institution'}
-            type={"text"}
-            id="institution"
-            placeholder="Harvard University"
-            length="40"
-            text={education ? education.institution : ""}
-          />
+        <Input
+          label="Issuing Institution"
+          type="text"
+          id="institution"
+          placeholder="Harvard University"
+          length="40"
+          text={education ? education.institution : ''}
+        />
 
-          <Input label={'Start Date'}
-            type={"text"}
-            id="start-ed"
-            placeholder="12/05"
-            length="11"
-            text={education ? education.start : ""}
-          />
+        <Input
+          label="Start Date"
+          type="text"
+          id="start-ed"
+          placeholder="12/05"
+          length="11"
+          text={education ? education.start : ''}
+        />
 
-          <Input label={'End Date'}
-            type={"text"}
-            id="end-ed"
-            placeholder="Ongoing"
-            length="11"
-            text={education ? education.end : ""}
-          />
+        <Input
+          label="End Date"
+          type="text"
+          id="end-ed"
+          placeholder="Ongoing"
+          length="11"
+          text={education ? education.end : ''}
+        />
 
-          <Textarea label={'Profile Text'}
-            id="edu-description"
-            placeholder="This is where you insert information about your education venture: remember to keep it short and memorable, maybe use bullet points for brevity."
-            maxLength="500"
-            text={education ? education.description : ""} 
-          />
+        <Textarea
+          label="Profile Text"
+          id="edu-description"
+          placeholder="This is where you insert information about your education venture: remember to keep it short and memorable, maybe use bullet points for brevity."
+          maxLength="500"
+          text={education ? education.description : ''}
+        />
 
-          <div className="flex-row">
-            <button className="button-cancel"
-              type="button"
-              onClick={toggleEdit}
-              >
-               Cancel
-            </button>
+        <div className="flex-row">
+          <button
+            className="button-cancel"
+            type="button"
+            onClick={toggleEdit}
+          >
+            Cancel
+          </button>
 
-            <button className="button-submit"
-              type="submit"
-              onClick={(e) => submitForm(e)}
-            >
-              Confirm
-            </button>
-          </div>
+          <button
+            className="button-submit"
+            type="submit"
+            onClick={(e) => submitForm(e)}
+          >
+            Confirm
+          </button>
+        </div>
 
-        </form>
-      </div>
-  )
+      </form>
+    </div>
+  );
 }
 
 export default EducationForm;

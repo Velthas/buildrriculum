@@ -3,8 +3,10 @@ import uniqid from 'uniqid';
 
 import Input from './inputs/Input';
 
-const SkillsForm = (props) => {
-  const {toggleEdit, handleSubmit, skill, setSkill} = props;
+function SkillsForm(props) {
+  const {
+    toggleEdit, handleSubmit, skill, setSkill,
+  } = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -14,41 +16,44 @@ const SkillsForm = (props) => {
       .value;
     const id = skill ? skill.id : uniqid();
 
-    handleSubmit(setSkill, {name, id});
+    handleSubmit(setSkill, { name, id });
     toggleEdit();
-  }
-  
+  };
+
   return (
     <div className="form">
-        <form id="skill-form">
+      <form id="skill-form">
 
-          <Input label={'Skill'}
-            type={'text'}
-            id="skill-name"
-            placeholder="Pizza Ingurgitation Specialist"
-            length="25"
-            text={skill ? skill.name : ""}
-          />
+        <Input
+          label="Skill"
+          type="text"
+          id="skill-name"
+          placeholder="Pizza Ingurgitation Specialist"
+          length="25"
+          text={skill ? skill.name : ''}
+        />
 
-          <div className="flex-row">
-            <button className="button-cancel"
-              type="button"
-              onClick={toggleEdit}
-            >
-               Cancel
-            </button>
+        <div className="flex-row">
+          <button
+            className="button-cancel"
+            type="button"
+            onClick={toggleEdit}
+          >
+            Cancel
+          </button>
 
-            <button className="button-submit"
-              type="submit"
-              onClick={ (e) => submitForm(e) }
-            >
-              Confirm
-            </button>
-          </div>
+          <button
+            className="button-submit"
+            type="submit"
+            onClick={(e) => submitForm(e)}
+          >
+            Confirm
+          </button>
+        </div>
 
-        </form>
-      </div>
-  )
+      </form>
+    </div>
+  );
 }
 
 export default SkillsForm;

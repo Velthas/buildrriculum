@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-const Input = (props) => {
-  const { text, label, type, id, placeholder, length } = props;
-  const [value, setValue] = useState(text || "");
+function Input(props) {
+  const {
+    text, label, type, id, placeholder, length,
+  } = props;
+  const [value, setValue] = useState(text || '');
 
   const handleChange = (e) => setValue(e.target.value);
 
@@ -18,10 +20,9 @@ const Input = (props) => {
         maxLength={length || 50}
         value={value}
         onChange={(e) => handleChange(e)}
-      >
-      </input>
+      />
     </>
-  )
+  );
 }
 
 export default Input;

@@ -5,26 +5,29 @@ import EducationForm from '../../form/EducationForm';
 import trashcan from '../../../images/trashcan.svg';
 import pencil from '../../../images/pencil.svg';
 
-const EducationItem = (props) => {
-  const { editEducation, deleteEducation, education, setEducation } = props;
+function EducationItem(props) {
+  const {
+    editEducation, deleteEducation, education, setEducation,
+  } = props;
 
   const [edit, setEdit] = useState(false);
   const [icons, setIcons] = useState(false);
 
   const toggleEdit = () => setEdit(!edit);
-  const toggleIcons = (bool) => setIcons(bool)
+  const toggleIcons = (bool) => setIcons(bool);
 
   return (
     <>
-      <div className="work-entry flex-column"
-        onMouseEnter={ () => toggleIcons(true) }
-        onMouseLeave={ () => toggleIcons(false) }
+      <div
+        className="work-entry flex-column"
+        onMouseEnter={() => toggleIcons(true)}
+        onMouseLeave={() => toggleIcons(false)}
       >
 
         <h4>{ education.title }</h4>
         <div className="flex-row space-between job-info">
           <p>{ education.institution }</p>
-          <p>{ education.start + ' - ' + education.end }</p>
+          <p>{ `${education.start} - ${education.end}` }</p>
         </div>
         <p>{ education.description }</p>
 
@@ -34,27 +37,28 @@ const EducationItem = (props) => {
             <img
               src={pencil}
               className="edit-icon"
-              onClick={ toggleEdit }
+              onClick={toggleEdit}
             />
-            
+
             <img
               src={trashcan}
               className="edit-icon"
-              onClick={() => deleteEducation(setEducation, education.id) }
+              onClick={() => deleteEducation(setEducation, education.id)}
             />
 
           </div>
         )}
       </div>
 
-      { edit &&
+      { edit
+        && (
         <EducationForm
-          handleSubmit={ editEducation }
-          toggleEdit={ toggleEdit }
-          education={ education }
-          setEducation={ setEducation }
+          handleSubmit={editEducation}
+          toggleEdit={toggleEdit}
+          education={education}
+          setEducation={setEducation}
         />
-      }
+        )}
     </>
   );
 }

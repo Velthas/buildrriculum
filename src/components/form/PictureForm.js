@@ -2,8 +2,8 @@ import React from 'react';
 
 import Input from './inputs/Input';
 
-const PictureForm = (props) => {
-  const {toggleEdit, handleSubmit, setPicture} = props;
+function PictureForm(props) {
+  const { toggleEdit, handleSubmit, setPicture } = props;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -14,34 +14,40 @@ const PictureForm = (props) => {
 
     handleSubmit(setPicture, newUrl);
     toggleEdit();
-  }
+  };
 
   return (
     <div className="form">
-        <form id="img-form">
+      <form id="img-form">
 
-          <Input label={'Image\'s URL'}
+        <Input
+          label={'Image\'s URL'}
           type="url"
           id="img-url"
           length="3000"
-          placeholder="https://my-example-url.com/picture.jpg"/>
+          placeholder="https://my-example-url.com/picture.jpg"
+        />
 
-          <div className="flex-row">
-            <button className="button-cancel"
-              type="button"
-              onClick={toggleEdit}>
-               Cancel
-            </button>
-            <button className="button-submit"
-              type="submit"
-              onClick={(e) => submitForm(e)}>
-              Confirm
-            </button>
-          </div>
+        <div className="flex-row">
+          <button
+            className="button-cancel"
+            type="button"
+            onClick={toggleEdit}
+          >
+            Cancel
+          </button>
+          <button
+            className="button-submit"
+            type="submit"
+            onClick={(e) => submitForm(e)}
+          >
+            Confirm
+          </button>
+        </div>
 
-        </form>
-      </div>
-  )
-} 
+      </form>
+    </div>
+  );
+}
 
 export default PictureForm;

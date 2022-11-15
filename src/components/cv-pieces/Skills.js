@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import SkillsForm from '../form/SkillsForm';
 import SkillItem from './entries/SkillItem';
 
-const Skills = (props) => {
-  const {skills, addSkill, editSkill, deleteSkill, callback} = props;
+function Skills(props) {
+  const {
+    skills, addSkill, editSkill, deleteSkill, callback,
+  } = props;
 
   const [add, setAdd] = useState(false);
   const [buttons, setButtons] = useState(false);
@@ -16,7 +18,8 @@ const Skills = (props) => {
     <div
       className="cv-section flex-column centered-both languages"
       onMouseEnter={() => toggleButtons(true)}
-      onMouseLeave={() => toggleButtons(false)}>
+      onMouseLeave={() => toggleButtons(false)}
+    >
 
       { buttons && (
         <button
@@ -25,8 +28,7 @@ const Skills = (props) => {
         >
           Add
         </button>
-        ) 
-      }
+      )}
 
       <h3 className="section-header">Skills</h3>
 
@@ -43,13 +45,12 @@ const Skills = (props) => {
       </ul>
 
       { add && (
-          <SkillsForm
-            handleSubmit={addSkill}
-            toggleEdit={toggleAdd}
-            setSkill={callback}
-          />
-        ) 
-      }
+      <SkillsForm
+        handleSubmit={addSkill}
+        toggleEdit={toggleAdd}
+        setSkill={callback}
+      />
+      )}
 
     </div>
   );

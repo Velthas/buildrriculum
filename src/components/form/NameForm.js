@@ -2,58 +2,62 @@ import React from 'react';
 
 import Input from './inputs/Input';
 
-const NameForm = (props) => {
-  const {toggleEdit, handleSubmit, setName} = props;
+function NameForm(props) {
+  const { toggleEdit, handleSubmit, setName } = props;
 
   const submitForm = (e) => {
     e.preventDefault();
 
     const info = Array
-        .from(document.querySelectorAll('#name-form input'))
-        .map((input) => input.value);
+      .from(document.querySelectorAll('#name-form input'))
+      .map((input) => input.value);
     const [userName, role] = info;
 
-    handleSubmit(setName, [{name: userName, title: role}]);
+    handleSubmit(setName, [{ name: userName, title: role }]);
     toggleEdit();
-  }
+  };
 
   return (
     <div className="form">
-        <form id="name-form">
+      <form id="name-form">
 
-          <Input label={'Full Name'}
-            type={"text"}
-            id="person-name"
-            placeholder="John Smith"
-            length="30"
-          />
+        <Input
+          label="Full Name"
+          type="text"
+          id="person-name"
+          placeholder="John Smith"
+          length="30"
+        />
 
-          <Input label={'Position'}
-            type={"text"}
-            id="person-role"
-            placeholder="Executive Pizza Officer"
-            length="50"
-          />
+        <Input
+          label="Position"
+          type="text"
+          id="person-role"
+          placeholder="Executive Pizza Officer"
+          length="50"
+        />
 
-          <div className="flex-row">
-            <button className="button-cancel"
-              type="button"
-              onClick={toggleEdit}
-            >
-               Cancel
-            </button>
+        <div className="flex-row">
+          <button
+            className="button-cancel"
+            type="button"
+            onClick={toggleEdit}
+          >
+            Cancel
+          </button>
 
-            <button className="button-submit"
-              type="submit"
-              onClick={(e) => submitForm(e)}
-            >
-              Confirm
-            </button>
-          </div>
+          <button
+            className="button-submit"
+            type="submit"
+            onClick={(e) => submitForm(e)}
+          >
+            Confirm
+          </button>
+        </div>
 
-        </form>
-      </div>
-  )
+      </form>
+    </div>
+  );
 }
 
 export default NameForm;

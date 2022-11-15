@@ -5,16 +5,15 @@ import uniqid from 'uniqid';
 import Background from '../cv-pieces/Background';
 import Sidebar from '../cv-pieces/Sidebar';
 
-const Cv = () => {
-  const removeFromArray = (stateSetter, id) => stateSetter(prevState =>
-      prevState.filter((element) => element.id !== id));
-  
-  const addToArray = (stateSetter, obj) => stateSetter(prevState =>  prevState.concat([obj]));
+function Cv() {
+  const removeFromArray = (stateSetter, id) => stateSetter((prevState) => prevState.filter((element) => element.id !== id));
+
+  const addToArray = (stateSetter, obj) => stateSetter((prevState) => prevState.concat([obj]));
 
   const changeInfo = (stateSetter, value) => stateSetter(value);
 
   const editEntry = (stateSetter, obj) => {
-    stateSetter(prevState => {
+    stateSetter((prevState) => {
       const mappedArray = [...prevState]
         .map((item) => {
           if (item.id === obj.id) {
@@ -24,8 +23,8 @@ const Cv = () => {
           return item;
         });
       return mappedArray;
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex-row" id="cv-container">
@@ -47,7 +46,7 @@ const Cv = () => {
 
 class WrappedCv extends React.Component {
   render() {
-    return <Cv/>
+    return <Cv />;
   }
 }
 

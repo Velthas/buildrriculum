@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import WorkForm from '../form/WorkForm';
 import WorkItem from './entries/WorkItem';
 
-const Work = (props) => {
-  const { work, addWork, editWork, deleteWork, callback} = props;
+function Work(props) {
+  const {
+    work, addWork, editWork, deleteWork, callback,
+  } = props;
 
   const [buttons, setButtons] = useState(false);
   const [add, setAdd] = useState(false);
@@ -16,38 +18,41 @@ const Work = (props) => {
     <div
       className="cv-section flex-column work"
       onMouseEnter={() => toggleButtons(true)}
-      onMouseLeave={() => toggleButtons(true)}>
+      onMouseLeave={() => toggleButtons(true)}
+    >
 
-      { buttons &&
-       <button className="edit-button absolute-top-right"
+      { buttons
+       && (
+       <button
+         className="edit-button absolute-top-right"
          onClick={toggleAdd}
-        >
-           Add
-        </button> }
+       >
+         Add
+       </button>
+       ) }
 
-      <h3 className='section-header'>Work Experience</h3>
+      <h3 className="section-header">Work Experience</h3>
 
       <div>
-        { work.map((experience) => {
-          return (
-            <WorkItem 
-              editWork={editWork}
-              deleteWork={deleteWork}
-              work={experience}
-              key={experience.id}
-              setWork={callback}
-            />
-          )
-        })}
+        { work.map((experience) => (
+          <WorkItem
+            editWork={editWork}
+            deleteWork={deleteWork}
+            work={experience}
+            key={experience.id}
+            setWork={callback}
+          />
+        ))}
       </div>
 
-      { add &&
+      { add
+        && (
         <WorkForm
           handleSubmit={addWork}
           toggleEdit={toggleAdd}
           setWork={callback}
-        />  
-      }
+        />
+        )}
 
     </div>
   );

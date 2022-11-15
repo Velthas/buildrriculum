@@ -6,9 +6,9 @@ import email from '../../images/mail.svg';
 import web from '../../images/web.svg';
 import smartphone from '../../images/smartphone.svg';
 
-const Contacts = (props) => {
-  const {contacts, changeInfo, callback} = props;
-  const {telephone, mail, website} = contacts[0];
+function Contacts(props) {
+  const { contacts, changeInfo, callback } = props;
+  const { telephone, mail, website } = contacts[0];
 
   const [edit, setEdit] = useState(false);
   const [buttons, setButtons] = useState(false);
@@ -17,47 +17,63 @@ const Contacts = (props) => {
   const toggleButtons = (bool) => setButtons(bool);
 
   return (
-    <div className="cv-section flex-column centered-both contacts"
-      onMouseEnter={() => toggleButtons(true) }
-      onMouseLeave={() => toggleButtons(false) }>
+    <div
+      className="cv-section flex-column centered-both contacts"
+      onMouseEnter={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}
+    >
 
-      { buttons &&
-        <button className="edit-button absolute-top-right"
-          onClick={toggleEdit}>
+      { buttons
+        && (
+        <button
+          className="edit-button absolute-top-right"
+          onClick={toggleEdit}
+        >
           Modify
-        </button> 
-      }
+        </button>
+        )}
 
       <h3 className="section-header">Contacts</h3>
 
       <ul>
 
-        { telephone !== '' &&
+        { telephone !== ''
+        && (
         <li className="flex-row">
-          <img src={ smartphone } alt="Mobile Icon"></img>
+          <img src={smartphone} alt="Mobile Icon" />
           <p>{ telephone }</p>
-        </li> }
+        </li>
+        ) }
 
-        { mail !== '' &&
+        { mail !== ''
+        && (
         <li className="flex-row">
-          <img src={ email } alt="Mail Icon"></img>
-          <p> { mail } </p>
-        </li> }
+          <img src={email} alt="Mail Icon" />
+          <p>
+            {' '}
+            { mail }
+            {' '}
+          </p>
+        </li>
+        ) }
 
-        { website !== '' &&
+        { website !== ''
+        && (
         <li className="flex-row">
-          <img src={ web } alt="Website Icon"></img>
-          <a href={ website }>{ website }</a>
-        </li> }
+          <img src={web} alt="Website Icon" />
+          <a href={website}>{ website }</a>
+        </li>
+        ) }
       </ul>
 
-      { edit &&
+      { edit
+        && (
         <ContactForm
           handleSubmit={changeInfo}
           toggleEdit={toggleEdit}
           setContacts={callback}
-        />   
-      }
+        />
+        )}
 
     </div>
   );

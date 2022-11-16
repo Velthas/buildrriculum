@@ -18,7 +18,7 @@ function Work(props) {
     <div
       className="cv-section flex-column work"
       onMouseEnter={() => toggleButtons(true)}
-      onMouseLeave={() => toggleButtons(true)}
+      onMouseLeave={() => toggleButtons(false)}
     >
 
       { buttons
